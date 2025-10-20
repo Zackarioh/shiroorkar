@@ -3,62 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced CSS-Only Site</title>
-    <link rel="stylesheet" href="style.css">
+    <title>HTML CSS JS Example</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* This ID selector targets the HTML element with id="myHeading" */
+        #myHeading {
+            color: #333;
+        }
+
+        /* This class selector targets the HTML element with class="myButton" */
+        .myButton {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .myButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
 
-    <input type="checkbox" id="modal-toggle" class="modal-toggle">
-
-    <div class="grid-container">
-        
-        <header class="page-header">
-            <h1>Advanced CSS Site</h1>
-        </header>
-
-        <nav class="main-nav">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-
-        <main class="main-content">
-            <h2>Welcome to the Future of CSS</h2>
-            <p>This entire layout is built with CSS Grid. The navigation and component alignment use Flexbox. The best part? The modal pop-up on this page works with ZERO JavaScript.</p>
-            
-            <label for="modal-toggle" class="modal-open-button">Open Pure CSS Modal</label>
-
-            <h3>More Content</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus, a maximus massa commodo.</p>
-        </main>
-
-        <aside class="left-sidebar">
-            <h3>Left Sidebar</h3>
-            <p>This sidebar is a separate grid item.</p>
-        </aside>
-
-        <aside class="right-sidebar">
-            <h3>Right Sidebar</h3>
-            <p>This one is, too. On mobile, they will stack.</p>
-        </aside>
-
-        <footer class="page-footer">
-            <p>&copy; 2025 Advanced CSS. No scripts attached.</p>
-        </footer>
-
+    <div class="container">
+        <h1 id="myHeading">Hello, World!</h1>
+        <p>Click the button to change this text.</p>
+        <button class="myButton" id="colorButton">Click Me</button>
     </div>
 
-    <div class="modal-overlay">
-        <div class="modal-content">
-            <h3>This is a Pure CSS Modal!</h3>
-            <p>It was opened by checking a hidden checkbox. This "close" button is just a label that un-checks the same box, hiding the modal again.</p>
-            
-            <label for="modal-toggle" class="modal-close-button">&times; Close</label>
-        </div>
-    </div>
+    <script>
+        // 1. Find the button and the heading elements in the HTML
+        const button = document.getElementById('colorButton');
+        const heading = document.getElementById('myHeading');
+
+        // 2. Add an "event listener" to the button that waits for a 'click'
+        button.addEventListener('click', function() {
+            // 3. When the button is clicked, run this code:
+            heading.textContent = 'You clicked the button!';
+            heading.style.color = '#dc3545'; // Changes the text color
+        });
+    </script>
 
 </body>
 </html>
