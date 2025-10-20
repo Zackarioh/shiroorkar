@@ -1,215 +1,120 @@
-/* Basic Setup */
-:root {
-    --primary-color: #007aff; /* A clean blue for CTAs */
-    --text-color: #333;
-    --border-color: #ddd;
-    --bg-light: #f9f9f9;
+/* Basic Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    margin: 0;
-    padding: 2rem;
-    background-color: #fff;
-    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     line-height: 1.6;
 }
 
-/* Main Container Layout */
-.product-container {
-    display: flex;
-    flex-wrap: wrap; /* Allows stacking on small screens */
-    max-width: 1200px;
-    margin: 0 auto;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    overflow: hidden;
+/* --- Header Styling --- */
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Column 1: Gallery */
-.product-gallery {
-    flex: 1 1 50%; /* Flex: grow, shrink, basis (50%) */
-    padding: 1rem;
-    box-sizing: border-box;
-}
-
-.main-image-container img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-.thumbnail-gallery {
-    display: flex;
-    justify-content: flex-start;
-    gap: 10px;
-    margin-top: 1rem;
-}
-
-.thumbnail {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border: 2px solid var(--border-color);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: border-color 0.2s;
-}
-
-.thumbnail:hover {
-    border-color: var(--primary-color);
-}
-
-.thumbnail.active-thumb {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 5px rgba(0,122,255,0.5);
-}
-
-/* Column 2: Details */
-.product-details {
-    flex: 1 1 50%;
-    padding: 2rem;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-}
-
-.product-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin: 0;
-}
-
-.product-price {
-    font-size: 1.75rem;
-    font-weight: 500;
-    color: var(--primary-color);
-    margin: 0.5rem 0;
-}
-
-.product-description {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-}
-
-/* Size Options */
-.options-container {
-    margin-bottom: 2rem;
-}
-
-.option-label {
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #555;
-    display: block;
+header h1 {
     margin-bottom: 0.5rem;
 }
 
-.size-options {
-    display: flex;
-    gap: 10px;
-}
-
-.size-btn {
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    font-weight: 600;
-    background-color: #fff;
-    border: 2px solid var(--border-color);
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 5px 10px;
     border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s;
+    transition: background-color 0.3s;
 }
 
-.size-btn:hover {
-    border-color: #777;
+header nav a:hover {
+    background-color: #555;
 }
 
-.size-btn.active-size {
-    background-color: var(--text-color);
-    color: #fff;
-    border-color: var(--text-color);
+/* --- Main Content (Product Grid) Styling --- */
+.product-grid {
+    display: grid;
+    /* Create a responsive grid: 
+       - auto-fit tries to fit as many columns as possible.
+       - minmax ensures columns are at least 250px wide. */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto; /* Center the grid container */
 }
 
-.size-btn.disabled {
-    background-color: var(--bg-light);
-    color: #aaa;
-    cursor: not-allowed;
-    text-decoration: line-through;
+/* --- Product Card Styling --- */
+.product-card {
+    background: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
 }
 
-/* Action Buttons */
-.cta-button {
-    width: 100%;
-    padding: 1.25rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #fff;
-    background-color: var(--primary-color);
+.product-card:hover {
+    transform: translateY(-5px); /* Lift the card slightly on hover */
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.product-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.product-card .price {
+    font-size: 1.25rem;
+    color: #b12704; /* A common color for prices/deals */
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.product-card .description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.add-to-cart {
+    background-color: #007bff;
+    color: white;
     border: none;
-    border-radius: 4px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-.cta-button:hover {
+.add-to-cart:hover {
     background-color: #0056b3;
 }
 
-.wishlist-button {
-    width: 100%;
-    padding: 1rem;
-    margin-top: 0.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-color);
-    background-color: transparent;
-    border: 2px solid var(--border-color);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.wishlist-button:hover {
-    border-color: var(--text-color);
-    background-color: var(--bg-light);
-}
-
-/* Accordion */
-.info-accordion {
-    margin-top: 2rem;
-    border-top: 1px solid var(--border-color);
-}
-.accordion-item {
-    border-bottom: 1px solid var(--border-color);
-}
-.accordion-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
+/* --- Footer Styling --- */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
     padding: 1rem 0;
-    margin: 0;
-}
-.accordion-content {
-    display: none; /* Hidden by default - JS will show it */
-    padding-bottom: 1rem;
-}
-.accordion-content ul {
-    padding-left: 20px;
-    margin: 0;
-}
-
-/* Responsive: Stack columns on small screens */
-@media (max-width: 768px) {
-    body {
-        padding: 0;
-    }
-    .product-container {
-        flex-direction: column;
-        border: none;
-    }
-    .product-details, .product-gallery {
-        padding: 1.5rem;
-    }
+    margin-top: 20px;
 }
