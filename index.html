@@ -3,85 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aesthetic Solutions Inc.</title>
+    <title>Perfect Product Page</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
 
-    <header id="main-header">
-        <nav class="container">
-            <div class="logo">Aesthetic</div>
-            <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact" class="nav-cta">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <main class="product-container">
+        
+        <section class="product-gallery">
+            <div class="main-image-container">
+                <img src="https://via.placeholder.com/600x600.png?text=Main+Product+Image" alt="Main product view" id="main-image">
+            </div>
+            <div class="thumbnail-gallery">
+                <img src="https://via.placeholder.com/100x100.png?text=View+1" alt="Product thumbnail 1" class="thumbnail active-thumb">
+                <img src="https://via.placeholder.com/100x100.png?text=View+2" alt="Product thumbnail 2" class="thumbnail">
+                <img src="https://via.placeholder.com/100x100.png?text=View+3" alt="Product thumbnail 3" class="thumbnail">
+                <img src="https://via.placeholder.com/100x100.png?text=View+4" alt="Product thumbnail 4" class="thumbnail">
+            </div>
+        </section>
 
-    <section id="hero">
-        <div class="container">
-            <h1>We Build Professional Web Experiences</h1>
-            <p class="subtitle">Scalable solutions, elegant design, powerful results.</p>
-            <a href="#contact" class="cta-button">Get Started</a>
-        </div>
-    </section>
+        <section class="product-details">
+            <h1 class="product-title">Classic Cotton Crewneck</h1>
+            <span class="product-price">$45.00</span>
+            <p class="product-description">
+                A perfect everyday essential. Made from 100% premium soft cotton, 
+                this crewneck provides timeless style and comfort.
+            </p>
 
-    <section id="features">
-        <div class="container">
-            <h2>Core Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>Responsive Design</h3>
-                    <p>Looks great on all devices, from mobile to desktop.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Optimized Performance</h3>
-                    <p>Fast-loading and efficient for a seamless user experience.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Dynamic & Interactive</h3>
-                    <p>Engaging interfaces that respond to your users.</p>
+            <div class="options-container">
+                <span class="option-label">Size</span>
+                <div class="size-options" id="size-selector">
+                    <button class="size-btn">XS</button>
+                    <button class="size-btn">S</button>
+                    <button class="size-btn active-size">M</button>
+                    <button class="size-btn">L</button>
+                    <button class="size-btn">XL</button>
+                    <button class="size-btn disabled" disabled>XXL</button>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section id="about">
-        <div class="container">
-            <h2>About Us</h2>
-            <p>We are a team of expert designers and developers committed to building high-quality, professional websites. We believe in the power of clean code and beautiful design to help businesses succeed in the digital age.</p>
-        </div>
-    </section>
+            <button class="cta-button">Add to Cart</button>
+            <button class="wishlist-button">&hearts; Add to Wishlist</button>
 
-    <section id="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <form id="contact-form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" required>
+            <div class="info-accordion">
+                <div class="accordion-item">
+                    <h3 class="accordion-title">Details & Fit</h3>
+                    <div class="accordion-content">
+                        <p>Relaxed fit. Runs true to size.</p>
+                        <ul>
+                            <li>100% Supima Cotton</li>
+                            <li>Machine wash cold</li>
+                            <li>Imported</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
+                <div class="accordion-item">
+                    <h3 class="accordion-title">Shipping & Returns</h3>
+                    <div class="accordion-content">
+                        <p>Free standard shipping on orders over $50. Free returns within 30 days.</p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" rows="5"></textarea>
-                </div>
-                <button type="submit" class="cta-button">Send Message</button>
-            </form>
-        </div>
-    </section>
+            </div>
+        </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Aesthetic Solutions Inc. All rights reserved.</p>
-        </div>
-    </footer>
+    </main>
 
-    <script src="script.js"></script>
 </body>
 </html>
