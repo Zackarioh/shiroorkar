@@ -19,11 +19,11 @@
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc; /* A light gray background */
         }
-        .nav-link-hover:hover {
+        .nav-link:hover {
             color: #3b82f6; /* Blue-500 */
         }
         .nav-link-active {
-            color: #3b82f6; /* Blue-500 */
+            color: #3b82f6 !important; /* Blue-500 */
             font-weight: 600;
         }
         .product-card-hover {
@@ -32,6 +32,13 @@
         .product-card-hover:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        /* Style for page content transitions */
+        .page-content {
+            display: none;
+        }
+        .page-content.active {
+            display: block;
         }
     </style>
 </head>
@@ -46,18 +53,18 @@
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <!-- Logo -->
-            <a href="#" class="text-2xl font-bold text-gray-800">
+            <a href="#home" class="text-2xl font-bold text-gray-800 page-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block h-8 w-8 text-blue-600 -mt-1"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                 ShopSphere
             </a>
 
             <!-- Desktop Navigation -->
-            <div class="hidden lg:flex items-center space-x-8">
-                <a href="#" class="text-gray-600 nav-link-hover nav-link-active">Home</a>
-                <a href="#" class="text-gray-600 nav-link-hover">Deals</a>
-                <a href="#" class="text-gray-600 nav-link-hover">New Arrivals</a>
-                <a href="#" class="text-gray-600 nav-link-hover">Apparel</a>
-                <a href="#" class="text-gray-600 nav-link-hover">Electronics</a>
+            <div id="desktop-nav" class="hidden lg:flex items-center space-x-8">
+                <a href="#home" class="text-gray-600 nav-link page-link nav-link-active">Home</a>
+                <a href="#deals" class="text-gray-600 nav-link page-link">Deals</a>
+                <a href="#new-arrivals" class="text-gray-600 nav-link page-link">New Arrivals</a>
+                <a href="#apparel" class="text-gray-600 nav-link page-link">Apparel</a>
+                <a href="#electronics" class="text-gray-600 nav-link page-link">Electronics</a>
             </div>
 
             <!-- Header Icons -->
@@ -81,157 +88,150 @@
         
         <!-- Mobile Navigation -->
         <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4">
-            <a href="#" class="block py-2 text-gray-600 nav-link-hover nav-link-active">Home</a>
-            <a href="#" class="block py-2 text-gray-600 nav-link-hover">Deals</a>
-            <a href="#" class="block py-2 text-gray-600 nav-link-hover">New Arrivals</a>
-            <a href="#" class="block py-2 text-gray-600 nav-link-hover">Apparel</a>
-            <a href="#" class="block py-2 text-gray-600 nav-link-hover">Electronics</a>
+            <a href="#home" class="block py-2 text-gray-600 nav-link page-link nav-link-active">Home</a>
+            <a href="#deals" class="block py-2 text-gray-600 nav-link page-link">Deals</a>
+            <a href="#new-arrivals" class="block py-2 text-gray-600 nav-link page-link">New Arrivals</a>
+            <a href="#apparel" class="block py-2 text-gray-600 nav-link page-link">Apparel</a>
+            <a href="#electronics" class="block py-2 text-gray-600 nav-link page-link">Electronics</a>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="container mx-auto px-6 py-8">
         
-        <!-- Hero Section -->
-        <section class="relative bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl shadow-xl overflow-hidden mb-16">
-            <div class="container mx-auto px-6 py-20 text-white">
-                <div class="max-w-xl">
-                    <h1 class="text-4xl md:text-6xl font-bold leading-tight">Find Your Style</h1>
-                    <p class="mt-4 text-lg md:text-xl text-blue-100">Explore our curated collection of the latest trends in fashion and electronics. Quality and style delivered to your door.</p>
-                    <a href="#" class="mt-8 inline-block bg-white text-blue-600 font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-gray-100 transition-colors">Shop Now</a>
-                </div>
-            </div>
-             <!-- Decorative shapes for hero section -->
-            <div class="absolute top-0 right-0 -mt-20 -mr-20 w-64 h-64 bg-blue-400 rounded-full opacity-30"></div>
-            <div class="absolute bottom-0 right-10 -mb-20 w-48 h-48 bg-indigo-400 rounded-full opacity-30"></div>
-        </section>
-
-        <!-- Featured Products Section -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8">Featured Products</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                
-                <!-- Product Card 1 -->
-                <div class="bg-white rounded-2xl shadow-md overflow-hidden product-card-hover">
-                    <img src="https://placehold.co/400x400/3b82f6/ffffff?text=Product+1" alt="Product Image" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/ffffff?text=Image+Error';">
-                    <div class="p-6">
-                        <span class="text-sm text-gray-500">Electronics</span>
-                        <h3 class="text-lg font-semibold text-gray-800 mt-1 truncate">Wireless Headphones</h3>
-                        <p class="text-xl font-bold text-blue-600 mt-2">$199.99</p>
-                        <button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Add to Cart</button>
+        <!-- Home Page -->
+        <div id="home" class="page-content active">
+            <!-- Hero Section -->
+            <section class="relative bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl shadow-xl overflow-hidden mb-16">
+                <div class="container mx-auto px-6 py-20 text-white">
+                    <div class="max-w-xl">
+                        <h1 class="text-4xl md:text-6xl font-bold leading-tight">Find Your Style</h1>
+                        <p class="mt-4 text-lg md:text-xl text-blue-100">Explore our curated collection of the latest trends in fashion and electronics. Quality and style delivered to your door.</p>
+                        <a href="#deals" class="page-link mt-8 inline-block bg-white text-blue-600 font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-gray-100 transition-colors">Shop Now</a>
                     </div>
                 </div>
+                 <!-- Decorative shapes for hero section -->
+                <div class="absolute top-0 right-0 -mt-20 -mr-20 w-64 h-64 bg-blue-400 rounded-full opacity-30"></div>
+                <div class="absolute bottom-0 right-10 -mb-20 w-48 h-48 bg-indigo-400 rounded-full opacity-30"></div>
+            </section>
 
-                <!-- Product Card 2 -->
-                <div class="bg-white rounded-2xl shadow-md overflow-hidden product-card-hover">
-                    <img src="https://placehold.co/400x400/10b981/ffffff?text=Product+2" alt="Product Image" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/ffffff?text=Image+Error';">
-                    <div class="p-6">
-                        <span class="text-sm text-gray-500">Apparel</span>
-                        <h3 class="text-lg font-semibold text-gray-800 mt-1 truncate">Urban Hoodie</h3>
-                        <p class="text-xl font-bold text-blue-600 mt-2">$79.00</p>
-                        <button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Add to Cart</button>
+            <!-- Featured Products Section -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8">Featured Products</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                     <!-- Product Cards... -->
+                    <div class="bg-white rounded-2xl shadow-md overflow-hidden product-card-hover">
+                        <img src="https://placehold.co/400x400/3b82f6/ffffff?text=Product+1" alt="Product Image" class="w-full h-56 object-cover">
+                        <div class="p-6"><span class="text-sm text-gray-500">Electronics</span><h3 class="text-lg font-semibold text-gray-800 mt-1 truncate">Wireless Headphones</h3><p class="text-xl font-bold text-blue-600 mt-2">$199.99</p><button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Add to Cart</button></div>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-md overflow-hidden product-card-hover">
+                        <img src="https://placehold.co/400x400/10b981/ffffff?text=Product+2" alt="Product Image" class="w-full h-56 object-cover">
+                        <div class="p-6"><span class="text-sm text-gray-500">Apparel</span><h3 class="text-lg font-semibold text-gray-800 mt-1 truncate">Urban Hoodie</h3><p class="text-xl font-bold text-blue-600 mt-2">$79.00</p><button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Add to Cart</button></div>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-md overflow-hidden product-card-hover">
+                        <img src="https://placehold.co/400x400/f59e0b/ffffff?text=Product+3" alt="Product Image" class="w-full h-56 object-cover">
+                        <div class="p-6"><span class="text-sm text-gray-500">Home Goods</span><h3 class="text-lg font-semibold text-gray-800 mt-1 truncate">Minimalist Desk Lamp</h3><p class="text-xl font-bold text-blue-600 mt-2">$45.50</p><button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Add to Cart</button></div>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-md overflow-hidden product-card-hover">
+                        <img src="https://placehold.co/400x400/ef4444/ffffff?text=Product+4" alt="Product Image" class="w-full h-56 object-cover">
+                        <div class="p-6"><span class="text-sm text-gray-500">Accessories</span><h3 class="text-lg font-semibold text-gray-800 mt-1 truncate">Leather Smartwatch Band</h3><p class="text-xl font-bold text-blue-600 mt-2">$29.99</p><button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Add to Cart</button></div>
                     </div>
                 </div>
-
-                <!-- Product Card 3 -->
-                <div class="bg-white rounded-2xl shadow-md overflow-hidden product-card-hover">
-                    <img src="https://placehold.co/400x400/f59e0b/ffffff?text=Product+3" alt="Product Image" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/ffffff?text=Image+Error';">
-                    <div class="p-6">
-                        <span class="text-sm text-gray-500">Home Goods</span>
-                        <h3 class="text-lg font-semibold text-gray-800 mt-1 truncate">Minimalist Desk Lamp</h3>
-                        <p class="text-xl font-bold text-blue-600 mt-2">$45.50</p>
-                        <button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Add to Cart</button>
+            </section>
+            
+            <!-- Categories Section from original page -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8">Shop by Category</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="relative rounded-2xl overflow-hidden shadow-lg h-64 group"><img src="https://placehold.co/600x400/6366f1/ffffff?text=Electronics" alt="Electronics Category" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"><a href="#electronics" class="page-link absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center"><h3 class="text-white text-2xl font-bold">Electronics</h3></a></div>
+                    <div class="relative rounded-2xl overflow-hidden shadow-lg h-64 group"><img src="https://placehold.co/600x400/ec4899/ffffff?text=Apparel" alt="Apparel Category" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"><a href="#apparel" class="page-link absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center"><h3 class="text-white text-2xl font-bold">Apparel</h3></a></div>
+                    <div class="relative rounded-2xl overflow-hidden shadow-lg h-64 group"><img src="https://placehold.co/600x400/84cc16/ffffff?text=Home" alt="Home Goods Category" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"><a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center"><h3 class="text-white text-2xl font-bold">Home Goods</h3></a></div>
+                    <div class="relative rounded-2xl overflow-hidden shadow-lg h-64 group"><img src="https://placehold.co/600x400/eab308/ffffff?text=Shoes" alt="Shoes Category" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"><a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center"><h3 class="text-white text-2xl font-bold">Shoes</h3></a></div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Deals Page -->
+        <div id="deals" class="page-content">
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8">Today's Hot Deals</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                     <!-- Product Cards... -->
+                    <div class="bg-white rounded-2xl shadow-md overflow-hidden product-card-hover">
+                        <img src="https://placehold.co/400x400/ef4444/ffffff?text=Deal+1" alt="Deal Product" class="w-full h-56 object-cover"><div class="p-6"><span class="text-sm text-gray-500">Gaming</span><h3 class="text-lg font-semibold text-gray-800 mt-1 truncate">Mechanical Keyboard</h3><p class="text-xl font-bold text-red-600 mt-2"><span class="line-through text-gray-500 text-base font-normal mr-2">$120</span>$89.99</p><button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Add to Cart</button></div>
+                    </div>
+                     <div class="bg-white rounded-2xl shadow-md overflow-hidden product-card-hover">
+                        <img src="https://placehold.co/400x400/f97316/ffffff?text=Deal+2" alt="Deal Product" class="w-full h-56 object-cover"><div class="p-6"><span class="text-sm text-gray-500">Kitchen</span><h3 class="text-lg font-semibold text-gray-800 mt-1 truncate">Air Fryer Pro</h3><p class="text-xl font-bold text-red-600 mt-2"><span class="line-through text-gray-500 text-base font-normal mr-2">$150</span>$99.00</p><button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Add to Cart</button></div>
                     </div>
                 </div>
+            </section>
+        </div>
 
-                <!-- Product Card 4 -->
-                <div class="bg-white rounded-2xl shadow-md overflow-hidden product-card-hover">
-                    <img src="https://placehold.co/400x400/ef4444/ffffff?text=Product+4" alt="Product Image" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/ffffff?text=Image+Error';">
-                    <div class="p-6">
-                        <span class="text-sm text-gray-500">Accessories</span>
-                        <h3 class="text-lg font-semibold text-gray-800 mt-1 truncate">Leather Smartwatch Band</h3>
-                        <p class="text-xl font-bold text-blue-600 mt-2">$29.99</p>
-                        <button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Add to Cart</button>
+        <!-- New Arrivals Page -->
+        <div id="new-arrivals" class="page-content">
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8">New Arrivals</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <!-- Product Cards... -->
+                    <div class="bg-white rounded-2xl shadow-md overflow-hidden product-card-hover">
+                        <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=New+1" alt="New Arrival Product" class="w-full h-56 object-cover"><div class="p-6"><span class="text-sm text-gray-500">Apparel</span><h3 class="text-lg font-semibold text-gray-800 mt-1 truncate">Vintage Denim Jacket</h3><p class="text-xl font-bold text-blue-600 mt-2">$125.00</p><button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Add to Cart</button></div>
+                    </div>
+                     <div class="bg-white rounded-2xl shadow-md overflow-hidden product-card-hover">
+                        <img src="https://placehold.co/400x400/14b8a6/ffffff?text=New+2" alt="New Arrival Product" class="w-full h-56 object-cover"><div class="p-6"><span class="text-sm text-gray-500">Tech</span><h3 class="text-lg font-semibold text-gray-800 mt-1 truncate">Smart Home Hub</h3><p class="text-xl font-bold text-blue-600 mt-2">$149.99</p><button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Add to Cart</button></div>
+                    </div>
+                     <div class="bg-white rounded-2xl shadow-md overflow-hidden product-card-hover">
+                        <img src="https://placehold.co/400x400/d946ef/ffffff?text=New+3" alt="New Arrival Product" class="w-full h-56 object-cover"><div class="p-6"><span class="text-sm text-gray-500">Shoes</span><h3 class="text-lg font-semibold text-gray-800 mt-1 truncate">Retro Sneakers</h3><p class="text-xl font-bold text-blue-600 mt-2">$95.00</p><button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Add to Cart</button></div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
+        
+        <!-- Apparel Page -->
+        <div id="apparel" class="page-content">
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8">Apparel Collection</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                     <!-- Product Cards from before -->
+                    <div class="bg-white rounded-2xl shadow-md overflow-hidden product-card-hover">
+                        <img src="https://placehold.co/400x400/10b981/ffffff?text=Apparel+1" alt="Product Image" class="w-full h-56 object-cover">
+                        <div class="p-6"><span class="text-sm text-gray-500">Apparel</span><h3 class="text-lg font-semibold text-gray-800 mt-1 truncate">Urban Hoodie</h3><p class="text-xl font-bold text-blue-600 mt-2">$79.00</p><button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Add to Cart</button></div>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-md overflow-hidden product-card-hover">
+                        <img src="https://placehold.co/400x400/ec4899/ffffff?text=Apparel+2" alt="New Arrival Product" class="w-full h-56 object-cover"><div class="p-6"><span class="text-sm text-gray-500">Apparel</span><h3 class="text-lg font-semibold text-gray-800 mt-1 truncate">Classic T-Shirt</h3><p class="text-xl font-bold text-blue-600 mt-2">$25.00</p><button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Add to Cart</button></div>
+                    </div>
+                </div>
+            </section>
+        </div>
 
-        <!-- Categories Section -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8">Shop by Category</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Category 1 -->
-                <div class="relative rounded-2xl overflow-hidden shadow-lg h-64 group">
-                    <img src="https://placehold.co/600x400/6366f1/ffffff?text=Electronics" alt="Electronics Category" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Error';">
-                    <a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                        <h3 class="text-white text-2xl font-bold">Electronics</h3>
-                    </a>
+        <!-- Electronics Page -->
+        <div id="electronics" class="page-content">
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8">Electronics Hub</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <!-- Product Cards from before -->
+                    <div class="bg-white rounded-2xl shadow-md overflow-hidden product-card-hover">
+                        <img src="https://placehold.co/400x400/3b82f6/ffffff?text=Elec.+1" alt="Product Image" class="w-full h-56 object-cover">
+                        <div class="p-6"><span class="text-sm text-gray-500">Electronics</span><h3 class="text-lg font-semibold text-gray-800 mt-1 truncate">Wireless Headphones</h3><p class="text-xl font-bold text-blue-600 mt-2">$199.99</p><button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Add to Cart</button></div>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-md overflow-hidden product-card-hover">
+                        <img src="https://placehold.co/400x400/6366f1/ffffff?text=Elec.+2" alt="Product Image" class="w-full h-56 object-cover">
+                        <div class="p-6"><span class="text-sm text-gray-500">Electronics</span><h3 class="text-lg font-semibold text-gray-800 mt-1 truncate">4K Monitor</h3><p class="text-xl font-bold text-blue-600 mt-2">$349.00</p><button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Add to Cart</button></div>
+                    </div>
                 </div>
-                <!-- Category 2 -->
-                <div class="relative rounded-2xl overflow-hidden shadow-lg h-64 group">
-                    <img src="https://placehold.co/600x400/ec4899/ffffff?text=Apparel" alt="Apparel Category" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Error';">
-                    <a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                        <h3 class="text-white text-2xl font-bold">Apparel</h3>
-                    </a>
-                </div>
-                <!-- Category 3 -->
-                <div class="relative rounded-2xl overflow-hidden shadow-lg h-64 group">
-                    <img src="https://placehold.co/600x400/84cc16/ffffff?text=Home" alt="Home Goods Category" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Error';">
-                    <a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                        <h3 class="text-white text-2xl font-bold">Home Goods</h3>
-                    </a>
-                </div>
-                <!-- Category 4 -->
-                <div class="relative rounded-2xl overflow-hidden shadow-lg h-64 group">
-                    <img src="https://placehold.co/600x400/eab308/ffffff?text=Shoes" alt="Shoes Category" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Error';">
-                    <a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                        <h3 class="text-white text-2xl font-bold">Shoes</h3>
-                    </a>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
+
     </main>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-6 py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- About -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">ShopSphere</h4>
-                    <p class="text-gray-400">The best place to find the latest trends in fashion, electronics, and more. Quality guaranteed.</p>
-                </div>
-                <!-- Links -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-                    <ul>
-                        <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
-                    </ul>
-                </div>
-                <!-- Customer Service -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Customer Service</h4>
-                    <ul>
-                        <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Shipping & Returns</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
-                    </ul>
-                </div>
-                <!-- Newsletter -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Join Our Newsletter</h4>
-                    <p class="text-gray-400 mb-4">Get exclusive deals and updates straight to your inbox.</p>
-                    <form>
-                        <div class="flex">
-                            <input type="email" placeholder="Your email" class="w-full px-4 py-2 rounded-l-md text-gray-800 focus:outline-none">
-                            <button class="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700">Subscribe</button>
-                        </div>
-                    </form>
-                </div>
+                 <!-- Footer Content... -->
+                <div><h4 class="text-lg font-semibold mb-4">ShopSphere</h4><p class="text-gray-400">The best place to find the latest trends in fashion, electronics, and more. Quality guaranteed.</p></div>
+                <div><h4 class="text-lg font-semibold mb-4">Quick Links</h4><ul><li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">About Us</a></li><li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Contact</a></li><li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li><li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Careers</a></li></ul></div>
+                <div><h4 class="text-lg font-semibold mb-4">Customer Service</h4><ul><li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Shipping & Returns</a></li><li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li><li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li></ul></div>
+                <div><h4 class="text-lg font-semibold mb-4">Join Our Newsletter</h4><p class="text-gray-400 mb-4">Get exclusive deals and updates straight to your inbox.</p><form><div class="flex"><input type="email" placeholder="Your email" class="w-full px-4 py-2 rounded-l-md text-gray-800 focus:outline-none"><button class="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700">Subscribe</button></div></form></div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500">
                 <p>&copy; 2025 ShopSphere. All Rights Reserved.</p>
@@ -240,35 +240,66 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const pageLinks = document.querySelectorAll('.page-link');
+            const pageContents = document.querySelectorAll('.page-content');
+            const allNavLinks = document.querySelectorAll('#desktop-nav a, #mobile-menu a');
 
-        // Add to cart notification
-        const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-        const toast = document.getElementById('toast');
-        let toastTimeout;
+            function showPage(pageId) {
+                // Hide all page contents
+                pageContents.forEach(content => {
+                    content.classList.remove('active');
+                });
 
-        addToCartButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Clear any existing timeout
-                if (toastTimeout) {
-                    clearTimeout(toastTimeout);
+                // Show the target page content
+                const targetPage = document.getElementById(pageId);
+                if (targetPage) {
+                    targetPage.classList.add('active');
                 }
 
-                // Show the toast
-                toast.classList.remove('translate-x-[150%]');
+                // Update active state in navigation
+                 allNavLinks.forEach(link => {
+                    link.classList.remove('nav-link-active');
+                    if (link.getAttribute('href') === `#${pageId}`) {
+                        link.classList.add('nav-link-active');
+                    }
+                });
                 
-                // Hide the toast after 3 seconds
-                toastTimeout = setTimeout(() => {
-                    toast.classList.add('translate-x-[150%]');
-                }, 3000);
+                // Close mobile menu after navigation
+                document.getElementById('mobile-menu').classList.add('hidden');
+            }
+
+            pageLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const pageId = link.getAttribute('href').substring(1);
+                    showPage(pageId);
+                    window.scrollTo(0, 0); // Scroll to top on page change
+                });
+            });
+
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Add to cart notification
+            const toast = document.getElementById('toast');
+            let toastTimeout;
+            document.body.addEventListener('click', function(event) {
+                if (event.target.classList.contains('add-to-cart-btn')) {
+                    if (toastTimeout) clearTimeout(toastTimeout);
+                    toast.classList.remove('translate-x-[150%]');
+                    toastTimeout = setTimeout(() => {
+                        toast.classList.add('translate-x-[150%]');
+                    }, 3000);
+                }
             });
         });
     </script>
 </body>
 </html>
+
