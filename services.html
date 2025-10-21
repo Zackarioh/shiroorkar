@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiroorkar - Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d0d0d;
+            color: #e5e7eb;
+        }
+        .section-title {
+            color: #8b5cf6;
+        }
+        .cta-button {
+            background-color: #d946ef;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(217, 70, 239, 0.4);
+        }
+        .cta-button:hover {
+            background-color: #c026d3;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(217, 70, 239, 0.6);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header / Navigation -->
+    <header class="bg-gray-900 shadow-xl sticky top-0 z-50 border-b border-purple-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-white">
+                Shiroorkar
+            </div>
+            <nav class="hidden md:flex space-x-8 font-semibold">
+                <a href="home.html" class="text-gray-300 hover:text-purple-400 transition duration-300">Home</a>
+                <a href="about.html" class="text-gray-300 hover:text-purple-400 transition duration-300">Our Story</a>
+                <a href="services.html" class="text-purple-400 transition duration-300">Services</a>
+                <a href="home.html#contact" class="text-gray-300 hover:text-purple-400 transition duration-300">Contact</a>
+            </nav>
+            <button class="md:hidden p-2 rounded-md hover:bg-gray-800 transition duration-300">
+                <svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Featured Services/Products Section (Full Page Content) -->
+        <section id="services" class="py-16 sm:py-24 bg-gray-900 min-h-screen">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-5xl font-extrabold mb-12 text-white border-b border-purple-500/50 pb-4">
+                    Our [Your Industry] Solutions
+                </h1>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] border border-gray-700">
+                        <div class="text-5xl text-purple-400 mb-4">🛠️</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Hand-Crafted Solutions</h3>
+                        <p class="text-gray-400 text-base">
+                            Custom work tailored to your exact specifications. We don't use cookie-cutter plans—everything is built specifically for you.
+                        </p>
+                        <a href="home.html#contact" class="mt-4 inline-block text-sm font-semibold text-purple-400 hover:text-purple-600 transition duration-300">
+                            Get a Quote &rarr;
+                        </a>
+                    </div>
+
+                    <!-- Service Card 2 -->
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] border border-gray-700">
+                        <div class="text-5xl text-purple-400 mb-4">🔒</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Lifetime Quality Guarantee</h3>
+                        <p class="text-gray-400 text-base">
+                            Confidence in our materials and labor. Our family name is behind every job, ensuring durability and performance for years.
+                        </p>
+                        <a href="home.html#contact" class="mt-4 inline-block text-sm font-semibold text-purple-400 hover:text-purple-600 transition duration-300">
+                            Learn More &rarr;
+                        </a>
+                    </div>
+
+                    <!-- Service Card 3 -->
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] border border-gray-700">
+                        <div class="text-5xl text-purple-400 mb-4">🤝</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Local Community Partner</h3>
+                        <p class="text-gray-400 text-base">
+                            We're invested in our neighborhood, supporting local charities and ensuring ethical sourcing within the community.
+                        </p>
+                        <a href="home.html#contact" class="mt-4 inline-block text-sm font-semibold text-purple-400 hover:text-purple-600 transition duration-300">
+                            Partner With Us &rarr;
+                        </a>
+                    </div>
+
+                    <!-- Additional Service Placeholder -->
+                     <div class="bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] border border-gray-700 md:col-span-3 lg:col-span-1">
+                        <div class="text-5xl text-purple-400 mb-4">⭐</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Maintenance & Repair</h3>
+                        <p class="text-gray-400 text-base">
+                            Comprehensive maintenance plans and quick-response repair services to keep your [product type] running smoothly.
+                        </p>
+                        <a href="home.html#contact" class="mt-4 inline-block text-sm font-semibold text-purple-400 hover:text-purple-600 transition duration-300">
+                            Book Service &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 border-t border-purple-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:flex sm:justify-between sm:items-center">
+            <p class="text-gray-400">&copy; 2025 Shiroorkar. All rights reserved.</p>
+            <div class="mt-4 sm:mt-0 space-x-4">
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
