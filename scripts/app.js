@@ -104,6 +104,152 @@ const els = {
 };
 
 // Utils
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const money = (n) => `$${Number(n).toFixed(0)}`;
+const announce = (msg) => { if (els.live) els.live.textContent = msg; };
+const toast = $('#toast');
+const showToast = (txt, ms = 2000) => {
+  if (!toast) return;
+  toast.textContent = txt;
+  toast.hidden = false;
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(() => (toast.hidden = true), ms);
+};
+
+// Theme
+function setTheme(mode) {
+  const root = document.documentElement;
+  if (mode === 'system') {
+    localStorage.removeItem('theme-basic');
+    const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+    root.classList.toggle('dark', !!prefersDark);
+    return;
+  }
+  root.classList.toggle('dark', mode === 'dark');
+  try { localStorage.setItem('theme-basic', mode); } catch {}
+}
+(function initTheme() {
+  // Sync with system when not set
+  try {
+    if (!localStorage.getItem('theme-basic') && window.matchMedia) {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      mq.addEventListener?.('change', e => document.documentElement.classList.toggle('dark', e.matches));
+    }
+  } catch {}
+})();
+
+// Smooth scroll
+$$('.nav a, .site-footer a, .actions a').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const href = a.getAttribute('href');
+    if (!href || !href.startsWith('#')) return;
+    e.preventDefault();
+    const target = $(href);
+    target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    history.replaceState(null, '', href);
+  });
+});
+
+// Widgets
+(function greet() {
+  const input = $('#name');
+  const btn = $('#greet-btn');
+  const msg = $('#greet-msg');
+  btn?.addEventListener('click', () => {
+    const name = (input?.value || '').trim();
+    msg.textContent = name ? `Hello, ${name}!` : 'Please enter your name.';
+    if (!name) input?.focus();
+  });
+  // Shortcut: '/' to focus input
+  document.addEventListener('keydown', (e) => {
+    if (e.key === '/' && document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA') {
+      e.preventDefault(); input?.focus();
+    }
+  });
+})();
+
+(function counter() {
+  const btn = $('#count-btn');
+  const el = $('#count');
+  let n = 0;
+  btn?.addEventListener('click', () => { el.textContent = String(++n); });
+})();
+
+(function themeControls() {
+  const headerBtn = $('#theme-btn');
+  const localBtn = $('#theme-btn-local');
+  const resetBtn = $('#theme-reset');
+
+  const toggle = () => {
+    const isDark = document.documentElement.classList.contains('dark');
+    setTheme(isDark ? 'light' : 'dark');
+    showToast(`Theme: ${isDark ? 'Light' : 'Dark'}`);
+  };
+  headerBtn?.addEventListener('click', toggle);
+  localBtn?.addEventListener('click', toggle);
+  resetBtn?.addEventListener('click', () => { setTheme('system'); showToast('Theme: System'); });
+
+  // Keyboard shortcut: 't'
+  document.addEventListener('keydown', (e) => {
+    if (e.key.toLowerCase() === 't') toggle();
+    if (e.key === '?') showToast('Shortcuts: T toggle, / focus name, ? help', 3000);
+  });
+})();
+
+// Reveal sections on view
+(function reveal() {
+  const items = $$('.reveal');
+  if (!items.length || !('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting) {
+        en.target.classList.add('in-view');
+        io.unobserve(en.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -10% 0px' });
+  items.forEach(el => io.observe(el));
+})();
+
+// Online/offline
+(function network() {
+  const on = () => showToast('You are back online');
+  const off = () => showToast('You are offline');
+  window.addEventListener('online', on);
+  window.addEventListener('offline', off);
+})();
+
+// Footer year
+(function year() {
+  const y = $('#year');
+  if (y) y.textContent = String(new Date().getFullYear());
+})();
+
+// State
+const state = {
+  products: [],
+  view: [], // filtered/sorted
+  filters: { q: '', category: 'all', sort: 'featured' },
+  cart: []
+};
+
+// Elements
+const els = {
+  grid: document.getElementById('product-grid'),
+  empty: document.getElementById('empty-state'),
+  live: document.getElementById('live-region'),
+  search: document.getElementById('catalog-search'),
+  filterCategory: document.getElementById('filter-category'),
+  sort: document.getElementById('sort-select'),
+  reset: document.getElementById('catalog-reset'),
+  cartCount: document.getElementById('cart-count'),
+  cartDrawer: document.getElementById('cart-drawer'),
+  cartItems: document.getElementById('cart-items'),
+  cartSubtotal: document.getElementById('cart-subtotal')
+};
+
+// Utils
 const money = (n) => `$${Number(n).toFixed(0)}`;
 const announce = (msg) => { if (els.live) els.live.textContent = msg; };
 

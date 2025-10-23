@@ -11,38 +11,127 @@
     try{if(localStorage.getItem('theme-basic')==='dark')document.documentElement.classList.add('dark');}catch{}
   </script>
   <link rel="stylesheet" href="./styles/styles.css" />
-
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9155609767671896"
-    crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9155609767671896" crossorigin="anonymous"></script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
 
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="Shiroorkar home">Shiroorkar</a>
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#features">Features</a>
+        <a class="nav-link" href="#playground">Playground</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+      <button id="theme-btn" class="btn btn-ghost" type="button" aria-label="Toggle theme">Toggle theme</button>
+    </div>
+  </header>
 
-
-  <main class="container">
-    <h1>Shiroorkar</h1>
-    <p class="muted">Basic HTML/CSS/JS starter. No frameworks. No extras.</p>
-
-    <section class="card">
-      <h2>Greet</h2>
-      <label for="name">Your name</label>
-      <input id="name" type="text" placeholder="Type your name" autocomplete="name" aria-describedby="greet-msg" />
-      <button id="greet-btn" type="button">Greet</button>
-      <p id="greet-msg" class="muted" role="status" aria-live="polite"></p>
+  <main id="main">
+    <!-- Hero -->
+    <section id="home" class="section hero" aria-labelledby="hero-title">
+      <div class="container grid-2">
+        <div class="hero-text">
+          <h1 id="hero-title" class="headline">A tiny, fast starter that scales with you</h1>
+          <p class="subhead">Accessible, themeable, zero-dependency foundation. Add only what you need.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#playground">Try the Playground</a>
+            <a class="btn" href="#features">Explore Features</a>
+          </div>
+        </div>
+        <div class="hero-card card">
+          <h2 class="card-title">Why this starter?</h2>
+          <ul class="list">
+            <li>No frameworks, just HTML/CSS/JS</li>
+            <li>Light/Dark with system sync</li>
+            <li>Keyboard and screen-reader friendly</li>
+            <li>Small CSS, zero runtime deps</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <section class="card">
-      <h2>Counter</h2>
-      <button id="count-btn" type="button">Clicked <span id="count">0</span> times</button>
+    <!-- Features -->
+    <section id="features" class="section" aria-labelledby="features-title">
+      <div class="container">
+        <h2 id="features-title" class="section-title">Features</h2>
+        <div class="grid-3">
+          <article class="card reveal">
+            <h3 class="card-title">Design tokens</h3>
+            <p class="muted">Easy-to-tune colors, spacing, and typography with CSS variables.</p>
+          </article>
+          <article class="card reveal">
+            <h3 class="card-title">A11y by default</h3>
+            <p class="muted">Skip links, focus-visible, roles, and proper semantics out of the box.</p>
+          </article>
+          <article class="card reveal">
+            <h3 class="card-title">Progressive UX</h3>
+            <p class="muted">Reduced motion support, smooth scroll, and subtle section reveals.</p>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section class="card">
-      <h2>Theme</h2>
-      <button id="theme-btn" type="button">Toggle theme</button>
+    <!-- Playground (keeps your widgets) -->
+    <section id="playground" class="section" aria-labelledby="play-title">
+      <div class="container">
+        <h2 id="play-title" class="section-title">Playground</h2>
+
+        <div class="grid-2">
+          <section class="card reveal">
+            <h3 class="card-title">Greet</h3>
+            <label for="name">Your name</label>
+            <input id="name" type="text" placeholder="Type your name" autocomplete="name" aria-describedby="greet-msg" />
+            <button id="greet-btn" class="btn btn-primary" type="button">Greet</button>
+            <p id="greet-msg" class="muted" role="status" aria-live="polite"></p>
+          </section>
+
+          <section class="card reveal">
+            <h3 class="card-title">Counter</h3>
+            <button id="count-btn" class="btn" type="button">Clicked <span id="count">0</span> times</button>
+          </section>
+
+          <section class="card reveal">
+            <h3 class="card-title">Theme</h3>
+            <p class="muted">Toggle theme from header or press T. Respects system preference.</p>
+            <div class="row">
+              <button id="theme-btn-local" class="btn" type="button">Toggle theme</button>
+              <button id="theme-reset" class="btn btn-ghost" type="button">Reset to system</button>
+            </div>
+          </section>
+
+          <section class="card reveal">
+            <h3 class="card-title">Shortcuts</h3>
+            <ul class="list">
+              <li><kbd>T</kbd> Toggle theme</li>
+              <li><kbd>/</kbd> Focus name</li>
+              <li><kbd>?</kbd> Show help</li>
+            </ul>
+            <p id="toast" class="toast" hidden></p>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title" class="section-title">Contact</h2>
+        <p class="muted">Questions or ideas? This is a lightweight starter—extend freely.</p>
+      </div>
     </section>
   </main>
 
-  <script src="./scripts/app.js" defer></script>
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <small class="muted">© <span id="year"></span> Shiroorkar. All rights reserved.</small>
+      <a class="muted" href="#home">Back to top ↑</a>
+    </div>
+  </footer>
 
+  <script src="./scripts/app.js" defer></script>
+  <noscript><div class="promo">JavaScript is disabled; interactive features are unavailable.</div></noscript>
 </body>
 </html>
