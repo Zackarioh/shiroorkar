@@ -1,0 +1,13 @@
+:root {
+    --primary-color: #4a90e2; /* Main brand color */
+    --secondary-color: #d9d9d9; /* Light gray for backgrounds */
+    --accent-color: #f39c12; /* Accent color for buttons and highlights */
+    --text-color: #333333; /* Dark text color for readability */
+    --light-text-color: #ffffff; /* Light text color for contrast */
+    --border-color: #e0e0e0; /* Light border color */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Shadow color for components */
+    --font-family: 'Arial', sans-serif; /* Default font family */
+    --font-size-base: 16px; /* Base font size */
+    --font-size-lg: 18px; /* Large font size */
+    --font-size-sm: 14px; /* Small font size */
+}
