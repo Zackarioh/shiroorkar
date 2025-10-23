@@ -1,3 +1,37 @@
+// Tiny JS: greet, counter, and theme toggle (persisted)
+(function init() {
+  // Restore theme
+  try {
+    const saved = localStorage.getItem('theme-basic');
+    if (saved === 'dark') document.documentElement.classList.add('dark');
+  } catch {}
+
+  // Greet
+  const nameInput = document.getElementById('name');
+  const greetBtn = document.getElementById('greet-btn');
+  const greetMsg = document.getElementById('greet-msg');
+  greetBtn?.addEventListener('click', () => {
+    const name = (nameInput?.value || '').trim();
+    greetMsg.textContent = name ? `Hello, ${name}!` : 'Please enter your name.';
+  });
+
+  // Counter
+  const countBtn = document.getElementById('count-btn');
+  const countEl = document.getElementById('count');
+  let count = 0;
+  countBtn?.addEventListener('click', () => {
+    count += 1;
+    if (countEl) countEl.textContent = String(count);
+  });
+
+  // Theme toggle
+  const themeBtn = document.getElementById('theme-btn');
+  themeBtn?.addEventListener('click', () => {
+    const dark = document.documentElement.classList.toggle('dark');
+    try { localStorage.setItem('theme-basic', dark ? 'dark' : 'light'); } catch {}
+  });
+})();
+
 // Theme toggle with persistence + meta theme-color sync
 (function() {
   const root = document.documentElement;
