@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shiroorkar — Basic</title>
+  <meta name="theme-color" content="#0b0c10" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <script>
+    // Set dark theme before CSS to prevent flash
+    try{if(localStorage.getItem('theme-basic')==='dark')document.documentElement.classList.add('dark');}catch{}
+  </script>
   <link rel="stylesheet" href="./styles/styles.css" />
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9155609767671896"
@@ -20,27 +26,23 @@
     <section class="card">
       <h2>Greet</h2>
       <label for="name">Your name</label>
-      <input id="name" type="text" placeholder="Type your name" />
-      <button id="greet-btn">Greet</button>
-      <p id="greet-msg" class="muted"></p>
+      <input id="name" type="text" placeholder="Type your name" autocomplete="name" aria-describedby="greet-msg" />
+      <button id="greet-btn" type="button">Greet</button>
+      <p id="greet-msg" class="muted" role="status" aria-live="polite"></p>
     </section>
 
     <section class="card">
       <h2>Counter</h2>
-      <button id="count-btn">Clicked <span id="count">0</span> times</button>
+      <button id="count-btn" type="button">Clicked <span id="count">0</span> times</button>
     </section>
 
     <section class="card">
       <h2>Theme</h2>
-      <button id="theme-btn">Toggle theme</button>
+      <button id="theme-btn" type="button">Toggle theme</button>
     </section>
   </main>
 
-
-
-
   <script src="./scripts/app.js" defer></script>
 
-  </script>
 </body>
 </html>
