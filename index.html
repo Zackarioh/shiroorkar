@@ -1,222 +1,624 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shiroorkar - Local Quality, Enduring Craft</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Dark Theme Base Styles */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0d0d0d; /* Very Dark Background */
-            color: #e5e7eb; /* Light Text */
-        }
-        .section-title {
-            color: #8b5cf6; /* Violet/Purple for high contrast */
-        }
-        /* CTA Button Colors remain vibrant for visibility */
-        .cta-button {
-            background-color: #d946ef; /* Vibrant Purple */
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(217, 70, 239, 0.4);
-        }
-        .cta-button:hover {
-            background-color: #c026d3;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(217, 70, 239, 0.6);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Shiroorkar Shop — Quality Essentials, Built to Last</title>
+  <meta name="description" content="Discover curated everyday essentials crafted for quality, comfort, and longevity. Free shipping over $75 and easy 30-day returns." />
+
+  <!-- Social -->
+  <meta property="og:title" content="Shiroorkar Shop — Quality Essentials, Built to Last" />
+  <meta property="og:description" content="Curated essentials with premium materials and timeless style." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg:#0b0c10;
+      --bg-elev:#111218;
+      --bg-card:#141622;
+      --text:#e5e7eb;
+      --muted:#a3a7b3;
+      --border:#242636;
+      --accent:#a78bfa;
+      --accent-2:#7c3aed;
+      --accent-3:#d946ef;
+      --success:#22c55e;
+      --warning:#f59e0b;
+      --danger:#ef4444;
+      --shadow:0 10px 30px rgba(0,0,0,.45), 0 6px 16px rgba(124,58,237,.18);
+      --radius:14px;
+      --radius-sm:10px;
+      --radius-lg:18px;
+      --gradient:linear-gradient(135deg, rgba(124,58,237,.25), rgba(217,70,239,.18));
+      --focus: 0 0 0 3px rgba(124,58,237,.35);
+    }
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg:#f7f7fb;
+      --bg-elev:#ffffff;
+      --bg-card:#ffffff;
+      --text:#0f1222;
+      --muted:#646a80;
+      --border:#e4e6ef;
+      --accent:#7c3aed;
+      --accent-2:#7c3aed;
+      --accent-3:#d946ef;
+      --shadow:0 10px 30px rgba(10,10,50,.08), 0 6px 16px rgba(124,58,237,.10);
+      --gradient:linear-gradient(135deg, rgba(124,58,237,.10), rgba(217,70,239,.08));
+      --focus: 0 0 0 3px rgba(124,58,237,.28);
+    }
+
+    /* Base */
+    * { box-sizing: border-box }
+    html, body { margin:0; padding:0 }
+    body {
+      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 800px at 120% -10%, rgba(124,58,237,.12), transparent 60%),
+        radial-gradient(900px 700px at -10% 120%, rgba(217,70,239,.08), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; text-decoration: none }
+    img { max-width: 100%; display:block; height:auto }
+    ::selection { background: rgba(124,58,237,.25) }
+
+    /* Focus styles */
+    :where(a, button, input, select, textarea) { outline: none }
+    :where(a, button, input, select, textarea):focus-visible {
+      box-shadow: var(--focus);
+      border-radius: 10px;
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation:none !important; transition:none !important; scroll-behavior:auto !important }
+    }
+
+    .container { max-width: 1200px; margin-inline:auto; padding-inline: 20px }
+
+    /* Skip link */
+    .skip-link {
+      position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip-link:focus {
+      position:fixed; left:16px; top:16px; width:auto; height:auto; padding:10px 12px;
+      background:var(--bg-elev); border:1px solid var(--border); border-radius:10px; z-index:1000;
+    }
+
+    /* Header */
+    .header {
+      position: sticky; top:0; z-index:50;
+      backdrop-filter: saturate(180%) blur(10px);
+      background: color-mix(in oklab, var(--bg-elev) 80%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap: 12px;
+    }
+    .brand { display:flex; align-items:center; gap:12px; font-weight:800; font-size:1.1rem; letter-spacing:.3px }
+    .brand-badge {
+      width:34px; height:34px; border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-3));
+      display:grid; place-items:center; font-weight:800; color:#0b0c10; box-shadow:var(--shadow);
+    }
+    .nav-links { display:flex; gap: 6px; flex-wrap:wrap }
+    .nav-links a {
+      color: var(--muted); font-weight:600; font-size:.95rem; padding:8px 12px; border-radius:10px;
+      transition: color .2s, background .2s, transform .2s;
+    }
+    .nav-links a[aria-current="page"],
+    .nav-links a:hover { color: #fff; background: rgba(124,58,237,.14); transform: translateY(-1px) }
+
+    .actions { display:flex; gap:10px; align-items:center }
+    .btn {
+      border:none; cursor:pointer; border-radius:12px; font-weight:700;
+      padding:10px 14px; background:var(--bg-card); color:var(--text); border:1px solid var(--border);
+      transition: transform .2s, box-shadow .2s, background .2s, border-color .2s, filter .2s;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); border-color: color-mix(in oklab, var(--border), #777 20%) }
+    .btn:active { transform: translateY(0) scale(.99) }
+    .btn-accent {
+      background: linear-gradient(135deg,var(--accent-2),var(--accent-3));
+      border-color: transparent; color:#fff;
+    }
+    .btn-accent:hover { filter: brightness(1.05) }
+    .btn-icon {
+      display:inline-flex; align-items:center; gap:8px;
+    }
+
+    /* Hero */
+    .hero {
+      position:relative; overflow:hidden; border-bottom:1px solid var(--border);
+      background:
+        radial-gradient(1000px 600px at 20% -10%, rgba(124,58,237,.25), transparent 60%),
+        radial-gradient(800px 600px at 100% 10%, rgba(217,70,239,.15), transparent 55%),
+        linear-gradient(180deg, color-mix(in oklab, var(--bg-card), transparent 10%), var(--bg));
+    }
+    .hero-inner { display:grid; grid-template-columns:1.1fr .9fr; gap:36px; align-items:center; padding:56px 0 }
+    .headline { font-size: clamp(2rem, 3.5vw, 3.2rem); line-height:1.1; margin:0 0 12px; font-weight:800; letter-spacing:.2px }
+    .subhead { color: var(--muted); font-size:1.05rem; margin-bottom:22px; max-width: 58ch }
+    .hero-ctas { display:flex; gap:12px; flex-wrap:wrap }
+    .chip-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:18px }
+    .chip {
+      padding:8px 12px; border-radius:999px; border:1px solid var(--border); background:rgba(20,22,34,.7);
+      color:#cfd2dc; font-weight:600; font-size:.85rem
+    }
+    html[data-theme="light"] .chip { background:#fff; color:#38405a }
+
+    .hero-media {
+      border-radius:var(--radius-lg); overflow:hidden; position:relative; background:var(--bg-card);
+      border:1px solid var(--border); box-shadow:var(--shadow);
+    }
+    .hero-media::after {
+      content:''; position:absolute; inset:0; background:linear-gradient(180deg, transparent, rgba(11,12,16,.35));
+      pointer-events:none;
+    }
+    .hero-tag {
+      position:absolute; left:16px; bottom:16px; background:rgba(20,22,34,.7); backdrop-filter: blur(6px);
+      border:1px solid var(--border); padding:10px 12px; border-radius:12px; font-weight:700; color:#cbd0dd
+    }
+    html[data-theme="light"] .hero-tag { background: rgba(255,255,255,.75); color:#283048 }
+
+    .hero-img {
+      display:block; width:100%; height:auto; aspect-ratio:16/10; object-fit:cover;
+      background:linear-gradient(135deg,#1b1e2f,#131628);
+    }
+
+    /* Promo */
+    .promo {
+      display:flex; align-items:center; justify-content:center; gap:18px; text-align:center; flex-wrap:wrap;
+      background:linear-gradient(90deg, rgba(124,58,237,.18), rgba(217,70,239,.16));
+      border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+      padding:12px; font-weight:700; color:#eaeaf3;
+    }
+    html[data-theme="light"] .promo { color:#272a3f }
+    .promo small { font-weight:600; color:#d1c9f8 }
+
+    /* Sections */
+    .section { padding:42px 0 }
+    .section-header {
+      display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:18px; flex-wrap:wrap
+    }
+    .section-title { font-size:1.5rem; font-weight:800; margin:0 }
+    .section-sub { color:var(--muted); font-weight:600 }
+
+    /* Grid and cards */
+    .grid { display:grid; gap:16px; grid-template-columns: repeat(4, minmax(0, 1fr)) }
+    @media (max-width:1024px){ .grid{ grid-template-columns: repeat(3, minmax(0, 1fr)) } }
+    @media (max-width:768px){ .hero-inner{ grid-template-columns:1fr } .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+    @media (max-width:480px){ .grid{ grid-template-columns:1fr } }
+
+    .card {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius);
+      overflow:hidden; transition: transform .18s, box-shadow .2s, border-color .2s, background .2s;
+      content-visibility:auto; contain-intrinsic-size: 360px;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: color-mix(in oklab, var(--border), #777 25%); background: color-mix(in oklab, var(--bg-card), #fff 2%) }
+    .card-media { position:relative; overflow:hidden }
+    .badge {
+      position:absolute; top:10px; left:10px; font-size:.75rem; font-weight:800;
+      padding:6px 9px; border-radius:999px; background:rgba(124,58,237,.9);
+      border:1px solid rgba(255,255,255,.12)
+    }
+    .price-tag {
+      position:absolute; bottom:10px; right:10px; font-weight:800;
+      background:rgba(20,22,34,.7); border:1px solid var(--border); padding:6px 9px; border-radius:999px;
+    }
+    html[data-theme="light"] .price-tag { background: rgba(255,255,255,.85) }
+
+    .card-img { width:100%; aspect-ratio:1/1; object-fit:cover; background:#1b1e2f }
+    .card-body { padding:12px 12px 14px }
+    .title { font-weight:700; margin:0 0 6px; font-size:1rem }
+    .meta { display:flex; align-items:center; justify-content:space-between }
+    .rating { color:#fbbf24; font-weight:700; font-size:.9rem }
+    .muted { color:var(--muted); font-weight:600 }
+
+    /* Panel / Newsletter */
+    .panel {
+      background:linear-gradient(135deg, rgba(124,58,237,.14), rgba(25,27,40,.9));
+      border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px; box-shadow:var(--shadow)
+    }
+    html[data-theme="light"] .panel { background:linear-gradient(135deg, rgba(124,58,237,.08), #fff) }
+    .panel h3 { margin:0 0 10px; font-size:1.25rem }
+    .panel p { margin:0 0 16px; color:var(--muted) }
+    .inline-form { display:flex; gap:10px; flex-wrap:wrap }
+    .input {
+      appearance:none; background:var(--bg); border:1px solid var(--border);
+      color:var(--text); border-radius:12px; padding:12px 14px; min-width:260px; font-weight:600;
+      outline:none; transition:border-color .2s, box-shadow .2s;
+    }
+    .input:focus { border-color:#3c3f58; box-shadow:0 0 0 4px rgba(124,58,237,.15) }
+    .form-msg { margin-top:10px; font-weight:600 }
+    .form-msg[role="status"] { color: var(--muted) }
+
+    /* Footer */
+    .footer { border-top:1px solid var(--border); padding:28px 0; margin-top:28px; color:#c8cbe0 }
+    html[data-theme="light"] .footer { color:#44485d }
+    .footer-grid { display:grid; gap:18px; grid-template-columns:2fr 1fr 1fr 1fr }
+    @media (max-width:900px){ .footer-grid { grid-template-columns:1fr 1fr } }
+    @media (max-width:520px){ .footer-grid { grid-template-columns:1fr } }
+    .foot-col h4 { margin:0 0 10px; font-size:1rem }
+    .foot-col a { display:block; color:#b2b6c8; padding:6px 0; font-weight:600 }
+    .foot-col a:hover { color:#fff }
+    html[data-theme="light"] .foot-col a { color:#646a80 }
+    html[data-theme="light"] .foot-col a:hover { color:#000 }
+
+    /* Utility */
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
+  </style>
 </head>
-<body class="antialiased">
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- Header / Navigation (Dark background, light links) -->
-    <header class="bg-gray-900 shadow-xl sticky top-0 z-50 border-b border-purple-500/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-white">
-                Shiroorkar
-            </div>
-            <nav class="hidden md:flex space-x-8 font-semibold">
-                <a href="#home" class="text-gray-300 hover:text-purple-400 transition duration-300">Home</a>
-                <a href="#story" class="text-gray-300 hover:text-purple-400 transition duration-300">Our Story</a>
-                <a href="#services" class="text-gray-300 hover:text-purple-400 transition duration-300">Services</a>
-                <a href="#contact" class="text-gray-300 hover:text-purple-400 transition duration-300">Contact</a>
-            </nav>
-            <button class="md:hidden p-2 rounded-md hover:bg-gray-800 transition duration-300">
-                <!-- Simple hamburger icon SVG -->
-                <svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="#home" aria-label="Shiroorkar Shop home">
+        <span class="brand-badge" aria-hidden="true">S</span>
+        <span>Shiroorkar Shop</span>
+      </a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#new" aria-current="page">New</a>
+        <a href="#popular">Popular</a>
+        <a href="#deals">Deals</a>
+        <a href="#about">About</a>
+      </nav>
+      <div class="actions">
+        <a class="btn btn-icon" href="#search" aria-label="Search">
+          <span aria-hidden="true">🔎</span><span>Search</span>
+        </a>
+        <button id="theme-toggle" class="btn btn-icon" type="button" aria-pressed="false" aria-label="Toggle theme">
+          <span id="theme-icon" aria-hidden="true">🌙</span><span class="theme-text">Dark</span>
+        </button>
+        <a class="btn btn-accent btn-icon" href="#cart" aria-label="Cart">
+          <span aria-hidden="true">🛒</span>
+          <span>Cart • <span id="cart-count" aria-live="polite" aria-atomic="true">0</span></span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div>
+          <h1 id="hero-title" class="headline">Shop the Essentials. Crafted to Last.</h1>
+          <p class="subhead">Discover a curated selection of everyday goods designed with quality, comfort, and longevity in mind — in a look that fits your life.</p>
+          <div class="hero-ctas" role="group" aria-label="primary actions">
+            <a class="btn btn-accent" href="#new">Shop New Arrivals</a>
+            <a class="btn" href="#all">Browse All Categories</a>
+          </div>
+          <div class="chip-row" aria-label="categories">
+            <span class="chip">Apparel</span>
+            <span class="chip">Accessories</span>
+            <span class="chip">Home</span>
+            <span class="chip">Tech</span>
+          </div>
         </div>
-    </header>
-
-
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9155609767671896"
-     crossorigin="anonymous"></script>
-<!-- Addada -->
-    <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-9155609767671896"
-     data-ad-slot="7658583490"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-    <script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-
-    <main>
-        <!-- Home / Hero Section (Already dark, but ensures light text) -->
-        <section id="home" class="relative bg-gray-900 text-white pt-24 pb-32">
-            <!-- Background Image/Overlay Placeholder -->
-            <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://placehold.co/1920x800/212a32/ffffff?text=Image+of+Family+Workshop+or+Key+Product');"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent"></div>
-
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4">
-                    Quality Crafted. Trust Earned.
-                </h1>
-                <p class="text-xl sm:text-2xl font-light mb-8 text-gray-300 max-w-2xl mx-auto">
-                    Three generations dedicated to local service and enduring craftsmanship in [Your Industry].
-                </p>
-                <a href="#services" class="cta-button text-white font-bold py-3 px-8 rounded-full inline-block text-lg shadow-lg">
-                    See Our Services
-                </a>
-            </div>
-        </section>
-
-        <!-- Our Story / Family Values Section (Dark background, light text) -->
-        <section id="story" class="py-16 sm:py-24 bg-gray-800">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
-                    <div class="order-2 lg:order-1">
-                        <h2 class="text-4xl font-bold mb-4 section-title">
-                            Our Story: Built on a Family Promise
-                        </h2>
-                        <p class="mt-4 text-gray-300 leading-relaxed">
-                            TBD.
-                        </p>
-                        <p class="mt-4 text-gray-300 leading-relaxed border-l-4 border-purple-500 pl-4 italic">
-                            TBD.
-                        </p>
-                        <div class="mt-6 flex space-x-4">
-                            <a href="#" class="text-sm font-semibold text-purple-400 hover:text-purple-600 transition duration-300">
-                                Meet the Team &rarr;
-                            </a>
-                        </div>
-                    </div>
-                    <div class="order-1 lg:order-2 mt-8 lg:mt-0 relative">
-                        <div class="rounded-xl overflow-hidden shadow-2xl">
-                            <img src="https://placehold.co/600x400/292524/e5e7eb?text=Photo+of+Family+Members+or+Founders" alt="Founders of the family business" class="w-full h-full object-cover">
-                        </div>
-                        <!-- Testimonial Overlay -->
-                        <div class="absolute -bottom-4 -left-4 bg-purple-600 text-white p-4 rounded-xl shadow-xl w-64 hidden sm:block">
-                            <p class="italic text-sm">"The personal service was unmatched. They truly care about the details."</p>
-                            <footer class="mt-2 text-xs font-semibold">— Sarah M., Local Customer</footer>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Featured Services/Products Section (Darker background) -->
-        <section id="services" class="py-16 sm:py-24 bg-gray-900">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl sm:text-4xl font-bold mb-12 section-title">
-                    Our Featured Services
-                </h2>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Service Card 1 -->
-                    <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] border border-gray-700">
-                        <div class="text-4xl text-purple-400 mb-4">🛠️</div>
-                        <h3 class="text-xl font-bold mb-3 text-white">Hand-Crafted Solutions</h3>
-                        <p class="text-gray-400 text-sm">
-                            Custom work tailored to your exact specifications. We don't use cookie-cutter plans—everything is built specifically for you.
-                        </p>
-                    </div>
-
-                    <!-- Service Card 2 -->
-                    <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] border border-gray-700">
-                        <div class="text-4xl text-purple-400 mb-4">🔒</div>
-                        <h3 class="text-xl font-bold mb-3 text-white">Lifetime Quality Guarantee</h3>
-                        <p class="text-gray-400 text-sm">
-                            Confidence in our materials and labor. Our family name is behind every job, ensuring durability and performance for years.
-                        </p>
-                    </div>
-
-                    <!-- Service Card 3 -->
-                    <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] border border-gray-700">
-                        <div class="text-4xl text-purple-400 mb-4">🤝</div>
-                        <h3 class="text-xl font-bold mb-3 text-white">Local Community Partner</h3>
-                        <p class="text-gray-400 text-sm">
-                            We're invested in our neighborhood, supporting local charities and ensuring ethical sourcing within the community.
-                        </p>
-                    </div>
-                </div>
-                <a href="#" class="mt-12 cta-button text-white font-bold py-3 px-8 rounded-full inline-block text-lg shadow-lg">
-                    View Full Product Catalog
-                </a>
-            </div>
-        </section>
-
-
-        <!-- Contact Section (Dark background, light form container) -->
-        <section id="contact" class="py-16 sm:py-24 bg-gray-800">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-center section-title">
-                    Ready to Start Your Project?
-                </h2>
-                <div class="bg-gray-700 p-8 sm:p-12 rounded-xl shadow-2xl border border-gray-600">
-                    <form class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-200">Full Name</label>
-                                <input type="text" id="name" name="name" class="mt-1 block w-full border border-gray-600 rounded-lg shadow-sm p-3 focus:ring-purple-500 focus:border-purple-500 bg-gray-800 text-white">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-200">Email Address</label>
-                                <input type="email" id="email" name="email" class="mt-1 block w-full border border-gray-600 rounded-lg shadow-sm p-3 focus:ring-purple-500 focus:border-purple-500 bg-gray-800 text-white">
-                            </div>
-                        </div>
-                        <div>
-                            <label for="service" class="block text-sm font-medium text-gray-200">Interested Service</label>
-                            <select id="service" name="service" class="mt-1 block w-full border border-gray-600 rounded-lg shadow-sm p-3 focus:ring-purple-500 focus:border-purple-500 bg-gray-800 text-white">
-                                <option value="" class="bg-gray-800">Select a service...</option>
-                                <option class="bg-gray-800">Custom Design</option>
-                                <option class="bg-gray-800">Installation/Repair</option>
-                                <option class="bg-gray-800">Consultation</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-200">Your Message</label>
-                            <textarea id="message" name="message" rows="4" class="mt-1 block w-full border border-gray-600 rounded-lg shadow-sm p-3 focus:ring-purple-500 focus:border-purple-500 bg-gray-800 text-white"></textarea>
-                        </div>
-                        <div class="flex justify-center">
-                            <button type="submit" class="cta-button text-white font-bold py-3 px-10 rounded-full text-lg shadow-lg">
-                                Send Inquiry
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="mt-12 text-center text-gray-300">
-                    <p class="font-semibold">Or call us directly at:</p>
-                    <p class="text-2xl text-purple-400 font-extrabold mt-1">(555) 123-4567</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer (Deep gray) -->
-    <footer class="bg-gray-900 text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:flex sm:justify-between sm:items-center">
-            <p class="text-gray-400">&copy; 2025 Shiroorkar. All rights reserved.</p>
-            <div class="mt-4 sm:mt-0 space-x-4">
-                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
-                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
-            </div>
+        <div class="hero-media">
+          <img
+            class="hero-img"
+            alt="Lifestyle showcase of featured products"
+            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop"
+            width="1200" height="750"
+            decoding="async"
+            fetchpriority="high"
+            />
+          <div class="hero-tag">Featured: Everyday Carry Kit</div>
         </div>
-    </footer>
+      </div>
+    </section>
 
+    <!-- Promo -->
+    <div class="promo" role="note">
+      Free worldwide shipping on orders over $75 <small>+ Easy 30-day returns</small>
+    </div>
+
+    <!-- New Arrivals -->
+    <section id="new" class="section" aria-labelledby="new-title">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 id="new-title" class="section-title">New Arrivals</h2>
+            <div class="section-sub">Fresh drops, premium materials, timeless style</div>
+          </div>
+          <a class="btn" href="#all">View all</a>
+        </div>
+        <div class="grid" role="list">
+          <!-- Card 1 -->
+          <article class="card" role="listitem">
+            <div class="card-media">
+              <span class="badge">NEW</span>
+              <img class="card-img"
+                   alt="Minimalist backpack"
+                   src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=900&auto=format&fit=crop"
+                   width="900" height="900"
+                   loading="lazy" decoding="async"
+                   sizes="(max-width:768px) 50vw, (max-width:480px) 100vw, 25vw" />
+              <span class="price-tag" aria-label="Price 89 dollars">$89</span>
+            </div>
+            <div class="card-body">
+              <h3 class="title">Minimalist Backpack</h3>
+              <div class="meta">
+                <span class="rating" aria-label="Rating 4.8 out of 5">★ 4.8</span>
+                <span class="muted">5 colors</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card" role="listitem">
+            <div class="card-media">
+              <span class="badge" style="background:rgba(34,197,94,.9)">BEST</span>
+              <img class="card-img"
+                   alt="Everyday sneakers"
+                   src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=900&auto=format&fit=crop"
+                   width="900" height="900"
+                   loading="lazy" decoding="async"
+                   sizes="(max-width:768px) 50vw, (max-width:480px) 100vw, 25vw" />
+              <span class="price-tag">$79</span>
+            </div>
+            <div class="card-body">
+              <h3 class="title">Everyday Sneakers</h3>
+              <div class="meta">
+                <span class="rating">★ 4.7</span>
+                <span class="muted">Men/Women</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card" role="listitem">
+            <div class="card-media">
+              <img class="card-img"
+                   alt="Classic sunglasses"
+                   src="https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=900&auto=format&fit=crop"
+                   width="900" height="900"
+                   loading="lazy" decoding="async"
+                   sizes="(max-width:768px) 50vw, (max-width:480px) 100vw, 25vw" />
+              <span class="price-tag">$49</span>
+            </div>
+            <div class="card-body">
+              <h3 class="title">Classic Sunglasses</h3>
+              <div class="meta">
+                <span class="rating">★ 4.6</span>
+                <span class="muted">UV400</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="card" role="listitem">
+            <div class="card-media">
+              <span class="badge" style="background:rgba(245,158,11,.9)">LIMITED</span>
+              <img class="card-img"
+                   alt="Leather wallet"
+                   src="https://images.unsplash.com/photo-1606313564200-e75d5e30476e?q=80&w=900&auto=format&fit=crop"
+                   width="900" height="900"
+                   loading="lazy" decoding="async"
+                   sizes="(max-width:768px) 50vw, (max-width:480px) 100vw, 25vw" />
+              <span class="price-tag">$59</span>
+            </div>
+            <div class="card-body">
+              <h3 class="title">Leather Wallet</h3>
+              <div class="meta">
+                <span class="rating">★ 4.9</span>
+                <span class="muted">Full-grain</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="card" role="listitem">
+            <div class="card-media">
+              <img class="card-img"
+                   alt="Cozy hoodie"
+                   src="https://images.unsplash.com/photo-1548883354-94bcfe321c98?q=80&w=900&auto=format&fit=crop"
+                   width="900" height="900"
+                   loading="lazy" decoding="async"
+                   sizes="(max-width:768px) 50vw, (max-width:480px) 100vw, 25vw" />
+              <span class="price-tag">$69</span>
+            </div>
+            <div class="card-body">
+              <h3 class="title">Cozy Hoodie</h3>
+              <div class="meta">
+                <span class="rating">★ 4.5</span>
+                <span class="muted">Unisex</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="card" role="listitem">
+            <div class="card-media">
+              <img class="card-img"
+                   alt="Ceramic mug set"
+                   src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?q=80&w=900&auto=format&fit=crop"
+                   width="900" height="900"
+                   loading="lazy" decoding="async"
+                   sizes="(max-width:768px) 50vw, (max-width:480px) 100vw, 25vw" />
+              <span class="price-tag">$29</span>
+            </div>
+            <div class="card-body">
+              <h3 class="title">Ceramic Mug Set</h3>
+              <div class="meta">
+                <span class="rating">★ 4.4</span>
+                <span class="muted">Set of 2</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 7 -->
+          <article class="card" role="listitem">
+            <div class="card-media">
+              <img class="card-img"
+                   alt="Wireless earbuds"
+                   src="https://images.unsplash.com/photo-1518442325759-b7f4872ea8f6?q=80&w=900&auto=format&fit=crop"
+                   width="900" height="900"
+                   loading="lazy" decoding="async"
+                   sizes="(max-width:768px) 50vw, (max-width:480px) 100vw, 25vw" />
+              <span class="price-tag">$99</span>
+            </div>
+            <div class="card-body">
+              <h3 class="title">Wireless Earbuds</h3>
+              <div class="meta">
+                <span class="rating">★ 4.3</span>
+                <span class="muted">ANC</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 8 -->
+          <article class="card" role="listitem">
+            <div class="card-media">
+              <img class="card-img"
+                   alt="Adjustable desk lamp"
+                   src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=900&auto=format&fit=crop"
+                   width="900" height="900"
+                   loading="lazy" decoding="async"
+                   sizes="(max-width:768px) 50vw, (max-width:480px) 100vw, 25vw" />
+              <span class="price-tag">$39</span>
+            </div>
+            <div class="card-body">
+              <h3 class="title">Adjustable Desk Lamp</h3>
+              <div class="meta">
+                <span class="rating">★ 4.2</span>
+                <span class="muted">Dimmable</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular -->
+    <section id="popular" class="section" aria-labelledby="popular-title">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 id="popular-title" class="section-title">Popular Picks</h2>
+            <div class="section-sub">Community favorites loved for value and performance</div>
+          </div>
+          <a class="btn" href="#all">See more</a>
+        </div>
+        <div class="panel" role="region" aria-labelledby="bundle-title">
+          <h3 id="bundle-title">Bundle & Save</h3>
+          <p>Mix any 3 select items and get 15% off automatically at checkout.</p>
+          <form class="inline-form" id="newsletter-form" novalidate>
+            <label class="sr-only" for="email">Email</label>
+            <input class="input" id="email" name="email" type="email" placeholder="Enter your email for early access" aria-label="Email" required />
+            <button class="btn btn-accent" type="submit">Get early access</button>
+            <div id="form-msg" class="form-msg" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="about" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="foot-col">
+        <div class="brand" style="margin-bottom:8px">
+          <span class="brand-badge" aria-hidden="true">S</span>
+          <span>Shiroorkar Shop</span>
+        </div>
+        <p class="muted">Local quality, enduring craft. Thoughtful goods designed for everyday use.</p>
+      </div>
+      <div class="foot-col" aria-labelledby="shop-heading">
+        <h4 id="shop-heading">Shop</h4>
+        <a href="#new">New Arrivals</a>
+        <a href="#popular">Best Sellers</a>
+        <a href="#deals">Deals</a>
+        <a href="#all">All Products</a>
+      </div>
+      <div class="foot-col" aria-labelledby="support-heading">
+        <h4 id="support-heading">Support</h4>
+        <a href="#">Help Center</a>
+        <a href="#">Returns</a>
+        <a href="#">Warranty</a>
+        <a href="#">Shipping</a>
+      </div>
+      <div class="foot-col" aria-labelledby="company-heading">
+        <h4 id="company-heading">Company</h4>
+        <a href="#about">About</a>
+        <a href="#">Careers</a>
+        <a href="#">Sustainability</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="container" style="margin-top:20px">
+      <small class="muted">© 2025 Shiroorkar. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle with persistence
+    (function() {
+      const root = document.documentElement;
+      const btn = document.getElementById('theme-toggle');
+      const icon = document.getElementById('theme-icon');
+      const text = btn?.querySelector('.theme-text');
+
+      const stored = localStorage.getItem('theme');
+      const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initial = stored || (systemPrefersDark ? 'dark' : 'light');
+      setTheme(initial);
+
+      btn?.addEventListener('click', () => {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        setTheme(next);
+        localStorage.setItem('theme', next);
+      });
+
+      function setTheme(mode) {
+        root.setAttribute('data-theme', mode);
+        if (btn) btn.setAttribute('aria-pressed', String(mode === 'dark'));
+        if (icon) icon.textContent = mode === 'dark' ? '🌙' : '☀️';
+        if (text) text.textContent = mode === 'dark' ? 'Dark' : 'Light';
+      }
+    })();
+
+    // Newsletter form validation (demo)
+    (function() {
+      const form = document.getElementById('newsletter-form');
+      const input = document.getElementById('email');
+      const msg = document.getElementById('form-msg');
+      if (!form) return;
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!input.value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
+          msg.textContent = 'Please enter a valid email address.';
+          msg.style.color = 'var(--danger)';
+          input.focus();
+          return;
+        }
+        msg.textContent = 'Thanks! You will receive early access soon.';
+        msg.style.color = 'var(--success)';
+        form.reset();
+      });
+    })();
+  </script>
 </body>
 </html>

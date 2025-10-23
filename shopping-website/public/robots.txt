@@ -1,5 +1,0 @@
-User-agent: *
-Disallow: /src/
-Disallow: /public/index.html
-Disallow: /public/favicon.ico
-Allow: /
