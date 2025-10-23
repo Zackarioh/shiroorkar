@@ -28,6 +28,21 @@
   <!-- replace inline <style> with external stylesheet -->
   <link rel="stylesheet" href="./styles/styles.css">
   <link rel="prefetch" href="./data/products.json" as="fetch" />
+  <link rel="canonical" href="https://example.com/">
+  <script>
+    // Prevent theme flash: set data-theme ASAP from localStorage if available
+    try{const t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch{}
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Shiroorkar Shop",
+    "url":"https://example.com",
+    "logo":"https://example.com/assets/favicon.svg",
+    "sameAs":[]
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -56,6 +71,7 @@
           <span aria-hidden="true">🛒</span>
           <span>Cart • <span id="cart-count" aria-live="polite" aria-atomic="true">0</span></span>
         </a>
+        <button id="install-app" class="btn" type="button" hidden>Install App</button>
       </div>
     </div>
   </header>
@@ -292,6 +308,10 @@
             </div>
           </article>
         </div>
+        <div id="results-bar" class="results-bar">
+          <span id="results-count" class="muted"></span>
+          <button id="load-more" class="btn" type="button" hidden>Load more</button>
+        </div>
 
         <!-- Empty state -->
         <p id="empty-state" class="muted" hidden>No items match your filters.</p>
@@ -321,6 +341,10 @@
       </div>
     </section>
   </main>
+
+  <noscript>
+    <div class="promo">JavaScript is disabled; dynamic features are unavailable.</div>
+  </noscript>
 
   <!-- Live region for announcements -->
   <div id="live-region" class="sr-only" aria-live="polite" aria-atomic="true"></div>
@@ -395,5 +419,8 @@
 
   <!-- replace inline <script> with external script -->
   <script src="./scripts/app.js" defer></script>
+
+  <!-- Network status toast -->
+  <div id="net-status" class="toast" hidden></div>
 </body>
 </html>
