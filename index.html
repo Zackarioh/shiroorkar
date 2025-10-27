@@ -3,161 +3,54 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>VoiceApp — Login</title>
+    <title>VoxNote — Login</title>
     <link rel="stylesheet" href="styles/styles.css">
   </head>
   <body>
     <main class="container">
       <header class="site-header">
-        <h1>VoiceApp</h1>
-        <p class="muted">Demo voice recognition with client-side login (not for production)</p>
+        <h1>VoxNote</h1>
+        <p class="muted">Secure your session, then transcribe speech to text. Client-side demo.</p>
       </header>
 
       <section class="card auth-card">
         <div class="tabs">
-
           <button id="tab-login" class="tab active">Login</button>
           <button id="tab-register" class="tab">Register</button>
         </div>
+
         <form id="login-form" class="form">
           <label>Username
-            <input id="login-username" type="text" required>
+            <input id="login-username" type="text" required autocomplete="username">
           </label>
           <label>Password
-            <input id="login-password" type="password" required>
+            <input id="login-password" type="password" required autocomplete="current-password">
           </label>
           <div class="form-actions">
             <button type="submit" class="btn primary">Login</button>
           </div>
-          <div id="login-message" class="message"></div>
+          <div id="login-message" class="message" role="status" aria-live="polite"></div>
         </form>
 
         <form id="register-form" class="form hidden">
           <label>Username
-            <input id="reg-username" type="text" required>
+            <input id="reg-username" type="text" required autocomplete="username">
           </label>
           <label>Password
-            <input id="reg-password" type="password" required>
+            <input id="reg-password" type="password" required autocomplete="new-password">
           </label>
           <div class="form-actions">
             <button type="submit" class="btn">Create account</button>
           </div>
-          <div id="reg-message" class="message"></div>
+          <div id="reg-message" class="message" role="status" aria-live="polite"></div>
         </form>
       </section>
 
       <footer class="site-footer">
-        <p class="muted">Open this folder in a browser. Best in Chrome/Edge for SpeechRecognition API.</p>
+        <p class="muted">Best in Chrome/Edge. Demo-only; no real authentication.</p>
       </footer>
     </main>
 
-    <script src="scripts/app.js"></script>
+  <script type="module" src="scripts/app.mjs"></script>
   </body>
-</html>
-
-  <main id="main">
-    <!-- Hero -->
-    <section id="home" class="section hero" aria-labelledby="hero-title">
-      <div class="container grid-2">
-        <div class="hero-text">
-          <h1 id="hero-title" class="headline">A tiny, fast starter that scales with you</h1>
-          <p class="subhead">Accessible, themeable, zero-dependency foundation. Add only what you need.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="#playground">Try the Playground</a>
-            <a class="btn" href="#features">Explore Features</a>
-          </div>
-        </div>
-        <div class="hero-card card">
-          <h2 class="card-title">Why this starter?</h2>
-          <ul class="list">
-            <li>No frameworks, just HTML/CSS/JS</li>
-            <li>Light/Dark with system sync</li>
-            <li>Keyboard and screen-reader friendly</li>
-            <li>Small CSS, zero runtime deps</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features -->
-    <section id="features" class="section" aria-labelledby="features-title">
-      <div class="container">
-        <h2 id="features-title" class="section-title">Features</h2>
-        <div class="grid-3">
-          <article class="card reveal">
-            <h3 class="card-title">Design tokens</h3>
-            <p class="muted">Easy-to-tune colors, spacing, and typography with CSS variables.</p>
-          </article>
-          <article class="card reveal">
-            <h3 class="card-title">A11y by default</h3>
-            <p class="muted">Skip links, focus-visible, roles, and proper semantics out of the box.</p>
-          </article>
-          <article class="card reveal">
-            <h3 class="card-title">Progressive UX</h3>
-            <p class="muted">Reduced motion support, smooth scroll, and subtle section reveals.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Playground (keeps your widgets) -->
-    <section id="playground" class="section" aria-labelledby="play-title">
-      <div class="container">
-        <h2 id="play-title" class="section-title">Playground</h2>
-
-        <div class="grid-2">
-          <section class="card reveal">
-            <h3 class="card-title">Greet</h3>
-            <label for="name">Your name</label>
-            <input id="name" type="text" placeholder="Type your name" autocomplete="name" aria-describedby="greet-msg" />
-            <button id="greet-btn" class="btn btn-primary" type="button">Greet</button>
-            <p id="greet-msg" class="muted" role="status" aria-live="polite"></p>
-          </section>
-
-          <section class="card reveal">
-            <h3 class="card-title">Counter</h3>
-            <button id="count-btn" class="btn" type="button">Clicked <span id="count">0</span> times</button>
-          </section>
-
-          <section class="card reveal">
-            <h3 class="card-title">Theme</h3>
-            <p class="muted">Toggle theme from header or press T. Respects system preference.</p>
-            <div class="row">
-              <button id="theme-btn-local" class="btn" type="button">Toggle theme</button>
-              <button id="theme-reset" class="btn btn-ghost" type="button">Reset to system</button>
-            </div>
-          </section>
-
-          <section class="card reveal">
-            <h3 class="card-title">Shortcuts</h3>
-            <ul class="list">
-              <li><kbd>T</kbd> Toggle theme</li>
-              <li><kbd>/</kbd> Focus name</li>
-              <li><kbd>?</kbd> Show help</li>
-            </ul>
-            <p id="toast" class="toast" hidden></p>
-          </section>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="section" aria-labelledby="contact-title">
-      <div class="container">
-        <h2 id="contact-title" class="section-title">Contact</h2>
-        <p class="muted">Questions or ideas? This is a lightweight starter—extend freely.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer" role="contentinfo">
-    <div class="container footer-inner">
-      <small class="muted">© <span id="year"></span> Shiroorkar. All rights reserved.</small>
-      <a class="muted" href="#home">Back to top ↑</a>
-    </div>
-  </footer>
-
-  <script src="./scripts/app.js" defer></script>
-  <noscript><div class="promo">JavaScript is disabled; interactive features are unavailable.</div></noscript>
-</body>
-</html>
+  </html>

@@ -1,36 +1,38 @@
-/* Minimal styles for VoiceApp demo */
+/* VoxNote styles */
 :root{
-	--bg:#f8fafc; --card:#ffffff; --text:#111827; --muted:#6b7280; --accent:#2563eb; --danger:#dc2626; --success:#16a34a;
+	--bg:#0b1020; --panel:#0f1730; --card:#121c3a; --text:#e6ecff; --muted:#9db0d0;
+	--accent:#5b8cff; --accent-2:#33e1ed; --danger:#ff4d4f; --success:#30d158;
+	--border:#233258; --shadow:0 10px 30px rgba(0,10,40,.35);
 	font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);line-height:1.45}
-.container{max-width:900px;margin:24px auto;padding:0 16px}
+body{margin:0;background:linear-gradient(180deg,var(--bg),#0a0f1f 40%, #0b1226);color:var(--text);line-height:1.5}
+.container{max-width:960px;margin:24px auto;padding:0 16px}
 .site-header{margin-bottom:18px}
-.site-header h1{margin:0;font-size:1.6rem}
+.site-header h1{margin:0;font-size:1.8rem;letter-spacing:.3px;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .muted{color:var(--muted);font-size:.95rem}
-.card{background:var(--card);border-radius:10px;padding:16px;box-shadow:0 6px 18px rgba(15,23,42,0.06);margin-bottom:16px}
-.auth-card{max-width:420px;margin:10px auto}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:var(--shadow);backdrop-filter:blur(6px);margin-bottom:16px}
+.auth-card{max-width:440px;margin:10px auto}
 .form label{display:block;margin-bottom:10px}
-.form input{width:100%;padding:8px 10px;border:1px solid #e5e7eb;border-radius:6px}
+.form input, .form select{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#0a132a;color:var(--text)}
 .form-actions{display:flex;gap:8px;align-items:center;margin-top:8px}
-.btn{padding:8px 12px;border-radius:8px;border:1px solid #d1d5db;background:#fff;cursor:pointer}
-.btn.primary{background:var(--accent);color:white;border-color:transparent}
-.btn.warn{background:var(--danger);color:#fff}
-.btn.small{padding:6px 8px;font-size:.9rem}
-.tab{padding:8px 12px;border-radius:8px;border:none;background:transparent;cursor:pointer}
-.tab.active{background:#eef2ff;border-radius:8px}
+.btn{padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:#0a132a;color:var(--text);cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#001028;border-color:transparent}
+.btn.small{padding:6px 10px;font-size:.9rem}
+.tab{padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:#0a132a;color:var(--text);cursor:pointer}
+.tab.active{outline:2px solid var(--accent)}
 .hidden{display:none}
-.message{height:18px;margin-top:8px;color:var(--muted);font-size:.9rem}
+.message{min-height:18px;margin-top:8px;color:var(--muted);font-size:.9rem}
 .message.success{color:var(--success)}
 .message.error{color:var(--danger)}
-.topnav{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:linear-gradient(90deg,#fff,#fbfdff);border-bottom:1px solid #eef2f6}
-.topnav .brand{font-weight:600}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:linear-gradient(90deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border-bottom:1px solid var(--border)}
+.topnav .brand{font-weight:700}
 .topnav .nav-right{display:flex;gap:12px;align-items:center}
 .page h2{margin-top:8px}
 .controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-.transcript-box{min-height:120px;padding:10px;border-radius:8px;border:1px dashed #e6eefb;background:#fafcff;white-space:pre-wrap}
-.history ul{list-style:none;padding-left:0}
-.history li{padding:6px 0;border-bottom:1px solid #f1f5f9;font-size:.95rem}
+.transcript-box{min-height:160px;padding:12px;border-radius:12px;border:1px dashed var(--border);background:#0a132a;white-space:pre-wrap}
+.list{list-style:none;margin:0;padding-left:0}
+.list li{padding:10px;border:1px solid var(--border);border-radius:10px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:10px;background:#0a132a}
+.row{display:flex;gap:10px;flex-wrap:wrap}
 footer.site-footer{margin-top:16px;text-align:center;color:var(--muted);font-size:.9rem}
-@media(min-width:900px){.container{max-width:980px}}
+@media(min-width:1000px){.container{max-width:1080px}}
