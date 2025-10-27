@@ -1,33 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shiroorkar — Basic</title>
-  <meta name="theme-color" content="#0b0c10" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <script>
-    // Set dark theme before CSS to prevent flash
-    try{if(localStorage.getItem('theme-basic')==='dark')document.documentElement.classList.add('dark');}catch{}
-  </script>
-  <link rel="stylesheet" href="./styles/styles.css" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9155609767671896" crossorigin="anonymous"></script>
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VoiceApp — Login</title>
+    <link rel="stylesheet" href="styles/styles.css">
+  </head>
+  <body>
+    <main class="container">
+      <header class="site-header">
+        <h1>VoiceApp</h1>
+        <p class="muted">Demo voice recognition with client-side login (not for production)</p>
+      </header>
 
-  <header class="site-header" role="banner">
-    <div class="container header-inner">
-      <a class="brand" href="#home" aria-label="Shiroorkar home">Shiroorkar</a>
-      <nav class="nav" aria-label="Primary">
-        <a class="nav-link" href="#home">Home</a>
-        <a class="nav-link" href="#features">Features</a>
-        <a class="nav-link" href="#playground">Playground</a>
-        <a class="nav-link" href="#contact">Contact</a>
-      </nav>
-      <button id="theme-btn" class="btn btn-ghost" type="button" aria-label="Toggle theme">Toggle theme</button>
-    </div>
-  </header>
+      <section class="card auth-card">
+        <div class="tabs">
+
+          <button id="tab-login" class="tab active">Login</button>
+          <button id="tab-register" class="tab">Register</button>
+        </div>
+        <form id="login-form" class="form">
+          <label>Username
+            <input id="login-username" type="text" required>
+          </label>
+          <label>Password
+            <input id="login-password" type="password" required>
+          </label>
+          <div class="form-actions">
+            <button type="submit" class="btn primary">Login</button>
+          </div>
+          <div id="login-message" class="message"></div>
+        </form>
+
+        <form id="register-form" class="form hidden">
+          <label>Username
+            <input id="reg-username" type="text" required>
+          </label>
+          <label>Password
+            <input id="reg-password" type="password" required>
+          </label>
+          <div class="form-actions">
+            <button type="submit" class="btn">Create account</button>
+          </div>
+          <div id="reg-message" class="message"></div>
+        </form>
+      </section>
+
+      <footer class="site-footer">
+        <p class="muted">Open this folder in a browser. Best in Chrome/Edge for SpeechRecognition API.</p>
+      </footer>
+    </main>
+
+    <script src="scripts/app.js"></script>
+  </body>
+</html>
 
   <main id="main">
     <!-- Hero -->
