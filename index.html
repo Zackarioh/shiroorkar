@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PCease - Build Your PC With Confidence</title>
+    <meta name="description" content="Build your dream PC with compatibility checks, live price comparisons, and an easy PC builder. Browse CPUs, GPUs, RAM, Storage, Cases, and more.">
+    <meta property="og:title" content="PCease - Build Your PC With Confidence">
+    <meta property="og:description" content="Smart PC builder with compatibility checks and price comparison. Start building or browse parts now.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🖥️</text></svg>">
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
@@ -21,13 +27,32 @@
     <header class="hero">
         <div class="hero-content">
             <h1>Build Your Dream PC with Confidence</h1>
-            <p>We handle the compatibility checks and price comparisons, so you can focus on building.</p>
-            <a href="builder.html" class="cta-button">Start Building Now</a>
+            <p>We handle compatibility checks and price comparisons, so you can focus on building.</p>
+            <div class="hero-actions">
+                <a href="builder.html" class="cta-button">Start Building Now</a>
+                <a href="browse.html#search" class="secondary-button">Browse & Search Parts</a>
+            </div>
+            <form class="quick-search" action="browse.html" method="GET" role="search" aria-label="Quick component search">
+                <input type="text" name="q" placeholder="Search CPUs, GPUs, RAM..." aria-label="Search components">
+                <select name="category" aria-label="Filter by category">
+                    <option value="all">All Categories</option>
+                    <option value="cpu">CPU</option>
+                    <option value="gpu">GPU</option>
+                    <option value="motherboard">Motherboard</option>
+                    <option value="ram">RAM</option>
+                    <option value="storage">Storage</option>
+                    <option value="psu">Power Supply</option>
+                    <option value="pcCase">Case</option>
+                    <option value="monitor">Monitor</option>
+                </select>
+                <button type="submit" class="cta-button">Search</button>
+            </form>
         </div>
     </header>
 
-    <section class="features">
+    <section class="features" aria-labelledby="features-title">
         <div class="container">
+            <h2 id="features-title" class="section-title">Why PCease?</h2>
             <div class="feature-card">
                 <h3>Compatibility Guarantee</h3>
                 <p>Our smart system ensures every part you pick works perfectly together, preventing costly mistakes.</p>
@@ -43,8 +68,104 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <p></p>
+    <section class="categories" aria-labelledby="categories-title">
+        <div class="container">
+            <h2 id="categories-title" class="section-title">Shop by Category</h2>
+            <div class="card-grid">
+                <a class="card" href="browse.html?category=cpu#search" aria-label="Browse CPUs">
+                    <div class="card-emoji">🧠</div>
+                    <h3>CPUs</h3>
+                    <p>Ryzen, Core, and more</p>
+                </a>
+                <a class="card" href="browse.html?category=gpu#search" aria-label="Browse GPUs">
+                    <div class="card-emoji">🎮</div>
+                    <h3>GPUs</h3>
+                    <p>GeForce, Radeon</p>
+                </a>
+                <a class="card" href="browse.html?category=motherboard#search" aria-label="Browse Motherboards">
+                    <div class="card-emoji">🧩</div>
+                    <h3>Motherboards</h3>
+                    <p>AM5, LGA1700</p>
+                </a>
+                <a class="card" href="browse.html?category=ram#search" aria-label="Browse Memory">
+                    <div class="card-emoji">⚡</div>
+                    <h3>Memory</h3>
+                    <p>DDR4, DDR5 kits</p>
+                </a>
+                <a class="card" href="browse.html?category=storage#search" aria-label="Browse Storage">
+                    <div class="card-emoji">💾</div>
+                    <h3>Storage</h3>
+                    <p>NVMe, SATA SSDs</p>
+                </a>
+                <a class="card" href="browse.html?category=pcCase#search" aria-label="Browse Cases">
+                    <div class="card-emoji">🧱</div>
+                    <h3>Cases</h3>
+                    <p>ATX, mATX, ITX</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="presets" aria-labelledby="presets-title">
+        <div class="container">
+            <h2 id="presets-title" class="section-title">Popular Build Goals</h2>
+            <div class="card-grid">
+                <a class="card" href="builder.html" aria-label="Build for 1080p Gaming">
+                    <div class="card-emoji">🏁</div>
+                    <h3>1080p Gaming</h3>
+                    <p>Great FPS on a budget</p>
+                </a>
+                <a class="card" href="builder.html" aria-label="Build for 1440p Ultra">
+                    <div class="card-emoji">🌟</div>
+                    <h3>1440p Ultra</h3>
+                    <p>High refresh performance</p>
+                </a>
+                <a class="card" href="builder.html" aria-label="Build for Content Creation">
+                    <div class="card-emoji">🎬</div>
+                    <h3>Content Creation</h3>
+                    <p>Fast renders & multitasking</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" aria-labelledby="how-title">
+        <div class="container">
+            <h2 id="how-title" class="section-title">How It Works</h2>
+            <ol class="steps">
+                <li>
+                    <h4>Pick Your Parts</h4>
+                    <p>Use the Builder to choose components that match your needs and budget.</p>
+                </li>
+                <li>
+                    <h4>We Check Compatibility</h4>
+                    <p>Brand, RAM, and form-factor checks help you avoid bad combos.</p>
+                </li>
+                <li>
+                    <h4>Compare Prices</h4>
+                    <p>See live pricing across vendors before you buy.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container footer-grid">
+            <div>
+                <strong>PCease</strong>
+                <p>Smart, stress-free PC building.</p>
+            </div>
+            <nav aria-label="Footer">
+                <ul class="footer-links">
+                    <li><a href="browse.html">Browse Components</a></li>
+                    <li><a href="builder.html">PC Builder</a></li>
+                </ul>
+            </nav>
+            <div class="footer-note">© <span id="year"></span> PCease. All rights reserved.</div>
+        </div>
+        <script>
+            document.getElementById('year').textContent = new Date().getFullYear();
+        </script>
     </footer>
 
 </body>

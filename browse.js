@@ -80,4 +80,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     renderFilterButtons();
+
+    // Deep-link support: browse.html#search and/or ?q=...&category=...
+    const params = new URLSearchParams(window.location.search);
+    const hash = window.location.hash;
+    const qParam = params.get('q');
+    const categoryParam = params.get('category');
+    const validCategories = ['all', ...Object.keys(componentsDB)];
+    const applyDeepLink = () => {
+        if (hash === '#search' || qParam || categoryParam) {
+            modalContainer.classList.add('active');
+            // Category
+            if (categoryParam && validCategories.includes(categoryParam)) {
+                activeFilter = categoryParam;
+                // Update buttons UI
+                const currentActive = searchFiltersContainer.querySelector('.filter-btn.active');
+                if (currentActive) currentActive.classList.remove('active');
+                const targetBtn = searchFiltersContainer.querySelector(`.filter-btn[data-category="${categoryParam}"]`);
+                if (targetBtn) targetBtn.classList.add('active');
+            }
+            // Query
+            if (qParam) {
+                searchInput.value = qParam;
+            }
+            performSearch(searchInput.value);
+        }
+    };
+    applyDeepLink();
 });
