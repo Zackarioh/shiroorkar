@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCease - Browse Components</title>
+    <link rel="stylesheet" href="browse.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="brand-logo">PCease 🖥️</a>
+            <ul class="nav-links">
+                <li><a href="browse.html">Browse Components</a></li>
+                <li><a href="builder.html">PC Builder</a></li>
+            </ul>
+        </div>
+    </nav>
+~
+    <main class="container">
+        <h1>Component Database</h1>
+        <p>Use the search tool to find any component and view live market prices.</p>
+        <div class="search-entry-point">
+            <button id="open-search-modal-btn" class="cta-button">Search All Components</button>
+        </div>
+    </main>
+    
+    <div id="search-modal-container" class="modal-container">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Search Components</h2>
+                <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+            </div>
+            <div class="search-input-wrapper">
+                <input type="text" id="search-input" placeholder="e.g., RTX 4070 Ti, Ryzen 7, Samsung 990...">
+            </div>
+            <div id="search-filters" class="search-filters">
+                <!-- Filter buttons are generated here -->
+            </div>
+            <div id="search-results-body" class="modal-body">
+                <p class="search-prompt">Start typing to see results...</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p></p>
+    </footer>
+
+    <script src="browse.js"></script>
+</body>
+</html>

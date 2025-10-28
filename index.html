@@ -1,56 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>VoxNote — Login</title>
-    <link rel="stylesheet" href="styles/styles.css">
-  </head>
-  <body>
-    <main class="container">
-      <header class="site-header">
-        <h1>VoxNote</h1>
-        <p class="muted">Secure your session, then transcribe speech to text. Client-side demo.</p>
-      </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCease - Build Your PC With Confidence</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
 
-      <section class="card auth-card">
-        <div class="tabs">
-          <button id="tab-login" class="tab active">Login</button>
-          <button id="tab-register" class="tab">Register</button>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="brand-logo">PCease 🖥️</a>
+            <ul class="nav-links">
+                <li><a href="browse.html">Browse Components</a></li>
+                <li><a href="builder.html">PC Builder</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <form id="login-form" class="form">
-          <label>Username
-            <input id="login-username" type="text" required autocomplete="username">
-          </label>
-          <label>Password
-            <input id="login-password" type="password" required autocomplete="current-password">
-          </label>
-          <div class="form-actions">
-            <button type="submit" class="btn primary">Login</button>
-          </div>
-          <div id="login-message" class="message" role="status" aria-live="polite"></div>
-        </form>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Build Your Dream PC with Confidence</h1>
+            <p>We handle the compatibility checks and price comparisons, so you can focus on building.</p>
+            <a href="builder.html" class="cta-button">Start Building Now</a>
+        </div>
+    </header>
 
-        <form id="register-form" class="form hidden">
-          <label>Username
-            <input id="reg-username" type="text" required autocomplete="username">
-          </label>
-          <label>Password
-            <input id="reg-password" type="password" required autocomplete="new-password">
-          </label>
-          <div class="form-actions">
-            <button type="submit" class="btn">Create account</button>
-          </div>
-          <div id="reg-message" class="message" role="status" aria-live="polite"></div>
-        </form>
-      </section>
+    <section class="features">
+        <div class="container">
+            <div class="feature-card">
+                <h3>Compatibility Guarantee</h3>
+                <p>Our smart system ensures every part you pick works perfectly together, preventing costly mistakes.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Live Price Comparison</h3>
+                <p>We show you prices from multiple vendors so you can find the best deals on every component.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Simple & Intuitive</h3>
+                <p>Designed for both beginners and experts, our interface makes PC building straightforward and fun.</p>
+            </div>
+        </div>
+    </section>
 
-      <footer class="site-footer">
-        <p class="muted">Best in Chrome/Edge. Demo-only; no real authentication.</p>
-      </footer>
-    </main>
+    <footer class="footer">
+        <p></p>
+    </footer>
 
-  <script type="module" src="scripts/app.mjs"></script>
-  </body>
-  </html>
+</body>
+</html>
